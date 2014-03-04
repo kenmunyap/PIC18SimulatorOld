@@ -1,0 +1,22 @@
+---
+:source:
+  :path: test
+  :file: test_BitToggleOperation.c
+:successes:
+- :test: test_bitToggle_the_last_bit_need_to_toggle
+  :line: 8
+  :message: ''
+- :test: test_bitToggle_the_second_last_bit_need_to_toggle
+  :line: 28
+  :message: ''
+- :test: test_bitToggle_the_first_bit_need_to_toggle
+  :line: 48
+  :message: ''
+:failures: []
+:ignores: []
+:counts:
+  :total: 3
+  :passed: 3
+  :failed: 0
+  :ignored: 0
+:stdout: []
