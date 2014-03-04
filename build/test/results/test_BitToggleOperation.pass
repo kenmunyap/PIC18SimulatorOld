@@ -12,11 +12,14 @@
 - :test: test_bitToggle_the_first_bit_need_to_toggle
   :line: 48
   :message: ''
+- :test: test_bitToggle_the_rotate_operand1_to_bank_address
+  :line: 68
+  :message: ''
 :failures: []
 :ignores: []
 :counts:
-  :total: 3
-  :passed: 3
+  :total: 4
+  :passed: 4
   :failed: 0
   :ignored: 0
 :stdout: []

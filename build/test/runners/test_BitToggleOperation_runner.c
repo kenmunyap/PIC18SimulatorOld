@@ -33,6 +33,7 @@ extern void tearDown(void);
 extern void test_bitToggle_the_last_bit_need_to_toggle(void);
 extern void test_bitToggle_the_second_last_bit_need_to_toggle(void);
 extern void test_bitToggle_the_first_bit_need_to_toggle(void);
+extern void test_bitToggle_the_rotate_operand1_to_bank_address(void);
 
 
 //=======Test Reset Option=====
@@ -51,6 +52,7 @@ int main(void)
   RUN_TEST(test_bitToggle_the_last_bit_need_to_toggle, 8);
   RUN_TEST(test_bitToggle_the_second_last_bit_need_to_toggle, 28);
   RUN_TEST(test_bitToggle_the_first_bit_need_to_toggle, 48);
+  RUN_TEST(test_bitToggle_the_rotate_operand1_to_bank_address, 68);
 
   return (UnityEnd());
 }
