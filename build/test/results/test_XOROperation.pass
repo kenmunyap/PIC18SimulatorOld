@@ -1,0 +1,25 @@
+---
+:source:
+  :path: test
+  :file: test_XOROperation.c
+:successes:
+- :test: test_iORWF_save_in_WREG
+  :line: 8
+  :message: ''
+- :test: test_iORWF_save_in_file_register
+  :line: 29
+  :message: ''
+- :test: test_iORWF_save_in_BSR
+  :line: 49
+  :message: ''
+- :test: test_iORWF_save_in_access_bank
+  :line: 70
+  :message: ''
+:failures: []
+:ignores: []
+:counts:
+  :total: 4
+  :passed: 4
+  :failed: 0
+  :ignored: 0
+:stdout: []

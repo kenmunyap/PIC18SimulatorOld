@@ -3,7 +3,7 @@
 #include "Mullw.h"
 #include <inttypes.h>
 
-char FSR[0x1000];
+unsigned char FSR[0x1000];
 
 void  mullw(Bytecode *code) {
 	

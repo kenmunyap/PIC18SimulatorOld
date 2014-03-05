@@ -40,7 +40,7 @@ void  bitToggle(Bytecode *code) {
 	*/
 	
 	if(code->operand3==1){
-		FSR[(FSR[BSR]<<8)+code->operand1];
+		FSR[BSR]=(FSR[BSR]<<8)+FSR[code->operand1];
 		if(FSR[BSR]==0){
 			FSR[BSR] = 0x00;}
 		else if(FSR[BSR]==1){
@@ -74,6 +74,7 @@ void  bitToggle(Bytecode *code) {
 		else if(FSR[BSR]==15){
 			FSR[BSR] = 0x0F;}
 		else {
+			FSR[code->operand1];
 		}
 	}
 	

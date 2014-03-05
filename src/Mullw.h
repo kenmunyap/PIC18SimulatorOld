@@ -10,7 +10,7 @@
 
 #define PRODL 0xFF3
 
-extern char FSR[];
+extern unsigned char FSR[];
 
 void  mullw(Bytecode *code);
 

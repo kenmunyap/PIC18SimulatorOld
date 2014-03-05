@@ -77,10 +77,9 @@ void test_bitToggle_the_rotate_operand1_to_bank_address(){
 					 };
 				  
 	FSR[code.operand1]=0b00000010; // value of operand1 
-	FSR[BSR]=3;
 	bitToggle(&code);
 
 	TEST_ASSERT_EQUAL(0b00000110,FSR[code.operand1]);						
-	TEST_ASSERT_EQUAL_HEX8(0x03,FSR[BSR]);	
+	TEST_ASSERT_EQUAL_HEX8(0x06,FSR[BSR]);	
 
 }

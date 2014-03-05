@@ -2,8 +2,12 @@
 #define	__BYTECODE_H__
 
 typedef enum 	{
+					
 					BTG,
-					MULLW
+					MULLW,
+					IORWF,
+					XORWF,
+					DCFSNZ,
 				} Mnemonic;
 
 typedef struct {

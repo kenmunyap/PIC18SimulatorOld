@@ -153,15 +153,13 @@ void test_bitToggle_the_rotate_operand1_to_bank_address(){
 
  FSR[code.operand1]=0b00000010;
 
- FSR[0xfE0]=3;
-
  bitToggle(&code);
 
 
 
- UnityAssertEqualNumber((_U_SINT)((0b00000110)), (_U_SINT)((FSR[code.operand1])), (((void *)0)), (_U_UINT)83, UNITY_DISPLAY_STYLE_INT);
+ UnityAssertEqualNumber((_U_SINT)((0b00000110)), (_U_SINT)((FSR[code.operand1])), (((void *)0)), (_U_UINT)82, UNITY_DISPLAY_STYLE_INT);
 
- UnityAssertEqualNumber((_U_SINT)(_US8 )((0x03)), (_U_SINT)(_US8 )((FSR[0xfE0])), (((void *)0)), (_U_UINT)84, UNITY_DISPLAY_STYLE_HEX8);
+ UnityAssertEqualNumber((_U_SINT)(_US8 )((0x06)), (_U_SINT)(_US8 )((FSR[0xfE0])), (((void *)0)), (_U_UINT)83, UNITY_DISPLAY_STYLE_HEX8);
 
 
 

@@ -3,8 +3,8 @@
   :path: test
   :file: test_MullwOperation.c
 :successes:
-- :test: test_bitToggle_the_last_bit_need_to_toggle
-  :line: 8
+- :test: test_Mullw_store_into_PRODH_and_PRODL
+  :line: 9
   :message: ''
 :failures: []
 :ignores: []
@@ -13,5 +13,4 @@
   :passed: 1
   :failed: 0
   :ignored: 0
-:stdout:
-- '0'
+:stdout: []

@@ -9,7 +9,9 @@ void tearDown() {}
 
 
 
-void test_bitToggle_the_last_bit_need_to_toggle() {
+void test_Mullw_store_into_PRODH_and_PRODL(){
+
+
 
 
 
@@ -27,20 +29,20 @@ void test_bitToggle_the_last_bit_need_to_toggle() {
 
                     .operand2 = -1,
 
-                    .operand3 = -1,
+                    .operand3 =-1,
 
                   };
 
 
 
- FSR[0xf8b] = 0xE2;
 
 
+ FSR[0xFE8] = 0xE2;
 
  mullw(&code);
 
+ UnityAssertEqualNumber((_U_SINT)(_US8 )((0xAD)), (_U_SINT)(_US8 )((FSR[0xFF4])), (((void *)0)), (_U_UINT)25, UNITY_DISPLAY_STYLE_HEX8);
 
-
-
+ UnityAssertEqualNumber((_U_SINT)(_US8 )((0x08)), (_U_SINT)(_US8 )((FSR[0xFF3])), (((void *)0)), (_U_UINT)26, UNITY_DISPLAY_STYLE_HEX8);
 
 }

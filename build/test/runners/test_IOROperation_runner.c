@@ -30,7 +30,10 @@ char* GlobalOrderError;
 //=======External Functions This Runner Calls=====
 extern void setUp(void);
 extern void tearDown(void);
-extern void test_Mullw_store_into_PRODH_and_PRODL(void);
+extern void test_iORWF_save_in_WREG(void);
+extern void test_iORWF_save_in_file_register(void);
+extern void test_iORWF_save_in_BSR(void);
+extern void test_iORWF_save_in_access_bank(void);
 
 
 //=======Test Reset Option=====
@@ -44,9 +47,12 @@ void resetTest()
 //=======MAIN=====
 int main(void)
 {
-  Unity.TestFile = "test_MullwOperation.c";
+  Unity.TestFile = "test_IOROperation.c";
   UnityBegin();
-  RUN_TEST(test_Mullw_store_into_PRODH_and_PRODL, 9);
+  RUN_TEST(test_iORWF_save_in_WREG, 8);
+  RUN_TEST(test_iORWF_save_in_file_register, 29);
+  RUN_TEST(test_iORWF_save_in_BSR, 49);
+  RUN_TEST(test_iORWF_save_in_access_bank, 70);
 
   return (UnityEnd());
 }
