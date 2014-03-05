@@ -5,7 +5,27 @@
 void setUp() {}
 void tearDown() {}
 
-void test_bitToggle_the_last_bit_need_to_toggle() {
+void test_bitToggle_if_operand3_equal_0_toggle_first() {
+  // Create test fixture
+  Instruction inst = {
+                      .mnemonic = BTG,
+                      .name = "btg"
+                     };	
+  Bytecode code = { .instruction = &inst,
+                    .operand1 =	0x43,  
+                    .operand2 =	0, 	  
+                    .operand3 = 0,					
+                  };
+				  
+	FSR[code.operand1]=0x00;
+	
+	bitToggle(&code);
+
+	TEST_ASSERT_EQUAL_HEX8(0x01,FSR[code.operand1]);
+  
+}
+
+void test_bitToggle_if_operand3_equal_0_toggle_last() {
   // Create test fixture
   Instruction inst = {
                       .mnemonic = BTG,
@@ -13,73 +33,54 @@ void test_bitToggle_the_last_bit_need_to_toggle() {
                      };	
   Bytecode code = { .instruction = &inst,
                     .operand1 =	0x43,  //address of file select register
-                    .operand2 =	0, 	  // this is select which case need to be toggle;
+                    .operand2 =	7, 	  // this is select which case need to be toggle;
                     .operand3 = 0,					
                   };
 				  
-	FSR[code.operand1]=0b00000000;
+	FSR[code.operand1]=0x80;
 	
 	bitToggle(&code);
 
-	TEST_ASSERT_EQUAL(0b00000001,FSR[code.operand1]);
+	TEST_ASSERT_EQUAL_HEX8(0x00,FSR[code.operand1]);
   
 }
 
-void test_bitToggle_the_second_last_bit_need_to_toggle() {
+void test_bitToggle_if_operand3_equal_1_toggle_first() {
   // Create test fixture
   Instruction inst = {
                       .mnemonic = BTG,
                       .name = "btg"
                      };	
   Bytecode code = { .instruction = &inst,
-                    .operand1 =	0x43,  //address of file select register
-                    .operand2 =	1, 	  // this is select which case need to be toggle;
-                    .operand3 = 0,					
+                    .operand1 =	0x43,  
+                    .operand2 =	2, 	  
+                    .operand3 = 1,					
                   };
-				  
-	FSR[code.operand1]=0b00000010;
+	FSR[BSR] = 0x01;			  
+	FSR[(FSR[BSR]<<8)+code.operand1] = 0x10;
 	
 	bitToggle(&code);
 
-	TEST_ASSERT_EQUAL(0b00000000,FSR[code.operand1]);
+	TEST_ASSERT_EQUAL_HEX8(0x14,FSR[code.operand1]);
   
 }
 
-void test_bitToggle_the_first_bit_need_to_toggle() {
-  // Create test fixture
-  Instruction inst = {
-                      .mnemonic = BTG,
-                      .name = "btg"
-                     };	
-  Bytecode code = { .instruction = &inst,
-                    .operand1 =	0x43,  //address of file select register;
-                    .operand2 =	2, 	  // this is select which case need to be toggle;
-                    .operand3 = 0,					
-                  };
-				  
-	FSR[code.operand1]=0b00000010; // value of operand1 
-	
-	bitToggle(&code);
-
-	TEST_ASSERT_EQUAL(0b00000110,FSR[code.operand1]);
-  
-}
-
-void test_bitToggle_the_rotate_operand1_to_bank_address(){
+void test_bitToggle_if_operand3_equal_1_toggle_last(){
 	 Instruction inst = {
                       .mnemonic = BTG,
                       .name = "btg"
                      };	
 	 Bytecode code = { .instruction = &inst,
                     .operand1 =	0x43,  //address of file select register;
-                    .operand2 =	2, 	  // this is select which case need to be toggle;
+                    .operand2 =	7, 	  // this is select which case need to be toggle;
                     .operand3 = 1,					
 					 };
 				  
-	FSR[code.operand1]=0b00000010; // value of operand1 
+	FSR[BSR] = 0x01;			  
+	FSR[(FSR[BSR]<<8)+code.operand1] = 0x10;
+	
 	bitToggle(&code);
 
-	TEST_ASSERT_EQUAL(0b00000110,FSR[code.operand1]);						
-	TEST_ASSERT_EQUAL_HEX8(0x06,FSR[BSR]);	
+	TEST_ASSERT_EQUAL_HEX8(0x90,FSR[code.operand1]);
 
 }

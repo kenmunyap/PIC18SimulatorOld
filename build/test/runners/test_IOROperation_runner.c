@@ -30,10 +30,10 @@ char* GlobalOrderError;
 //=======External Functions This Runner Calls=====
 extern void setUp(void);
 extern void tearDown(void);
-extern void test_iORWF_save_in_WREG(void);
-extern void test_iORWF_save_in_file_register(void);
-extern void test_iORWF_save_in_BSR(void);
-extern void test_iORWF_save_in_access_bank(void);
+extern void test_iORWF_if_operand2_and_operand3_equal_to_0(void);
+extern void test_iORWF_if_operand2_equal_to_1_and_operand3_equal_to_0(void);
+extern void test_iORWF_if_operand2_equal_0_and_operand3_equal_to_1(void);
+extern void test_iORWF_if_operand2_operand3_equal_to_1(void);
 
 
 //=======Test Reset Option=====
@@ -49,10 +49,10 @@ int main(void)
 {
   Unity.TestFile = "test_IOROperation.c";
   UnityBegin();
-  RUN_TEST(test_iORWF_save_in_WREG, 8);
-  RUN_TEST(test_iORWF_save_in_file_register, 29);
-  RUN_TEST(test_iORWF_save_in_BSR, 49);
-  RUN_TEST(test_iORWF_save_in_access_bank, 70);
+  RUN_TEST(test_iORWF_if_operand2_and_operand3_equal_to_0, 8);
+  RUN_TEST(test_iORWF_if_operand2_equal_to_1_and_operand3_equal_to_0, 29);
+  RUN_TEST(test_iORWF_if_operand2_equal_0_and_operand3_equal_to_1, 49);
+  RUN_TEST(test_iORWF_if_operand2_operand3_equal_to_1, 70);
 
   return (UnityEnd());
 }

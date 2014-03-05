@@ -3,16 +3,16 @@
   :path: test
   :file: test_IOROperation.c
 :successes:
-- :test: test_iORWF_save_in_WREG
+- :test: test_iORWF_if_operand2_and_operand3_equal_to_0
   :line: 8
   :message: ''
-- :test: test_iORWF_save_in_file_register
+- :test: test_iORWF_if_operand2_equal_to_1_and_operand3_equal_to_0
   :line: 29
   :message: ''
-- :test: test_iORWF_save_in_BSR
+- :test: test_iORWF_if_operand2_equal_0_and_operand3_equal_to_1
   :line: 49
   :message: ''
-- :test: test_iORWF_save_in_access_bank
+- :test: test_iORWF_if_operand2_operand3_equal_to_1
   :line: 70
   :message: ''
 :failures: []

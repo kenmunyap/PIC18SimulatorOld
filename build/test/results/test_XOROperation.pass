@@ -3,17 +3,17 @@
   :path: test
   :file: test_XOROperation.c
 :successes:
-- :test: test_iORWF_save_in_WREG
+- :test: test_iORWF_if_operand2_and_operand3_equal_0
   :line: 8
   :message: ''
-- :test: test_iORWF_save_in_file_register
-  :line: 29
+- :test: test_iORWF_if_operand2_equal_1_and_operand3_equal_0
+  :line: 28
   :message: ''
-- :test: test_iORWF_save_in_BSR
-  :line: 49
+- :test: test_iORWF_if_operand2_equal_0_and_operand3_equal_1
+  :line: 48
   :message: ''
-- :test: test_iORWF_save_in_access_bank
-  :line: 70
+- :test: test_iORWF_if_operand2_equal_1_and_operand3_equal_1
+  :line: 67
   :message: ''
 :failures: []
 :ignores: []

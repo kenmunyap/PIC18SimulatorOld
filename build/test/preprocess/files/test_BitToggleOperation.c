@@ -9,7 +9,7 @@ void tearDown() {}
 
 
 
-void test_bitToggle_the_last_bit_need_to_toggle() {
+void test_bitToggle_if_operand3_equal_0_toggle_first() {
 
 
 
@@ -33,7 +33,7 @@ void test_bitToggle_the_last_bit_need_to_toggle() {
 
 
 
- FSR[code.operand1]=0b00000000;
+ FSR[code.operand1]=0x00;
 
 
 
@@ -41,7 +41,7 @@ void test_bitToggle_the_last_bit_need_to_toggle() {
 
 
 
- UnityAssertEqualNumber((_U_SINT)((0b00000001)), (_U_SINT)((FSR[code.operand1])), (((void *)0)), (_U_UINT)24, UNITY_DISPLAY_STYLE_INT);
+ UnityAssertEqualNumber((_U_SINT)(_US8 )((0x01)), (_U_SINT)(_US8 )((FSR[code.operand1])), (((void *)0)), (_U_UINT)24, UNITY_DISPLAY_STYLE_HEX8);
 
 
 
@@ -49,7 +49,7 @@ void test_bitToggle_the_last_bit_need_to_toggle() {
 
 
 
-void test_bitToggle_the_second_last_bit_need_to_toggle() {
+void test_bitToggle_if_operand3_equal_0_toggle_last() {
 
 
 
@@ -65,7 +65,7 @@ void test_bitToggle_the_second_last_bit_need_to_toggle() {
 
                     .operand1 = 0x43,
 
-                    .operand2 = 1,
+                    .operand2 = 7,
 
                     .operand3 = 0,
 
@@ -73,7 +73,7 @@ void test_bitToggle_the_second_last_bit_need_to_toggle() {
 
 
 
- FSR[code.operand1]=0b00000010;
+ FSR[code.operand1]=0x80;
 
 
 
@@ -81,7 +81,7 @@ void test_bitToggle_the_second_last_bit_need_to_toggle() {
 
 
 
- UnityAssertEqualNumber((_U_SINT)((0b00000000)), (_U_SINT)((FSR[code.operand1])), (((void *)0)), (_U_UINT)44, UNITY_DISPLAY_STYLE_INT);
+ UnityAssertEqualNumber((_U_SINT)(_US8 )((0x00)), (_U_SINT)(_US8 )((FSR[code.operand1])), (((void *)0)), (_U_UINT)44, UNITY_DISPLAY_STYLE_HEX8);
 
 
 
@@ -89,47 +89,9 @@ void test_bitToggle_the_second_last_bit_need_to_toggle() {
 
 
 
-void test_bitToggle_the_first_bit_need_to_toggle() {
+void test_bitToggle_if_operand3_equal_1_toggle_first() {
 
 
-
-  Instruction inst = {
-
-                      .mnemonic = BTG,
-
-                      .name = "btg"
-
-                     };
-
-  Bytecode code = { .instruction = &inst,
-
-                    .operand1 = 0x43,
-
-                    .operand2 = 2,
-
-                    .operand3 = 0,
-
-                  };
-
-
-
- FSR[code.operand1]=0b00000010;
-
-
-
- bitToggle(&code);
-
-
-
- UnityAssertEqualNumber((_U_SINT)((0b00000110)), (_U_SINT)((FSR[code.operand1])), (((void *)0)), (_U_UINT)64, UNITY_DISPLAY_STYLE_INT);
-
-
-
-}
-
-
-
-void test_bitToggle_the_rotate_operand1_to_bank_address(){
 
   Instruction inst = {
 
@@ -147,19 +109,59 @@ void test_bitToggle_the_rotate_operand1_to_bank_address(){
 
                     .operand3 = 1,
 
-      };
+                  };
+
+ FSR[0xfE0] = 0x01;
+
+ FSR[(FSR[0xfE0]<<8)+code.operand1] = 0x10;
 
 
-
- FSR[code.operand1]=0b00000010;
 
  bitToggle(&code);
 
 
 
- UnityAssertEqualNumber((_U_SINT)((0b00000110)), (_U_SINT)((FSR[code.operand1])), (((void *)0)), (_U_UINT)82, UNITY_DISPLAY_STYLE_INT);
+ UnityAssertEqualNumber((_U_SINT)(_US8 )((0x14)), (_U_SINT)(_US8 )((FSR[code.operand1])), (((void *)0)), (_U_UINT)64, UNITY_DISPLAY_STYLE_HEX8);
 
- UnityAssertEqualNumber((_U_SINT)(_US8 )((0x06)), (_U_SINT)(_US8 )((FSR[0xfE0])), (((void *)0)), (_U_UINT)83, UNITY_DISPLAY_STYLE_HEX8);
+
+
+}
+
+
+
+void test_bitToggle_if_operand3_equal_1_toggle_last(){
+
+  Instruction inst = {
+
+                      .mnemonic = BTG,
+
+                      .name = "btg"
+
+                     };
+
+  Bytecode code = { .instruction = &inst,
+
+                    .operand1 = 0x43,
+
+                    .operand2 = 7,
+
+                    .operand3 = 1,
+
+      };
+
+
+
+ FSR[0xfE0] = 0x01;
+
+ FSR[(FSR[0xfE0]<<8)+code.operand1] = 0x10;
+
+
+
+ bitToggle(&code);
+
+
+
+ UnityAssertEqualNumber((_U_SINT)(_US8 )((0x90)), (_U_SINT)(_US8 )((FSR[code.operand1])), (((void *)0)), (_U_UINT)84, UNITY_DISPLAY_STYLE_HEX8);
 
 
 

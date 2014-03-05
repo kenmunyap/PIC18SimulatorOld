@@ -5,15 +5,15 @@
 void setUp() {}
 void tearDown() {}
 
-void test_iORWF_save_in_WREG() {
+void test_iORWF_if_operand2_and_operand3_equal_0() {
   // Create test fixture
   Instruction inst = {
                       .mnemonic = XORWF,
                       .name = "xorwf"
                      };	
   Bytecode code = { .instruction = &inst,
-                    .operand1 =	0x34,  //address of file select register
-                    .operand2 =	0, 	  // this is select which case need to be toggle;
+                    .operand1 =	0x34,  
+                    .operand2 =	0, 	 
                     .operand3 = 0,					
                   };
 	
@@ -23,18 +23,17 @@ void test_iORWF_save_in_WREG() {
 	xorwf(&code);
 
 	TEST_ASSERT_EQUAL_HEX8(0xA8,FSR[WREG]);
-
 }
 
-void test_iORWF_save_in_file_register() {
+void test_iORWF_if_operand2_equal_1_and_operand3_equal_0() {
   // Create test fixture
   Instruction inst = {
                       .mnemonic = XORWF,
                       .name = "xorwf"
                      };	
   Bytecode code = { .instruction = &inst,
-                    .operand1 =	0x34,  //address of file select register
-                    .operand2 =	1, 	  // this is select which case need to be toggle;
+                    .operand1 =	0x34, 
+                    .operand2 =	1, 	  
                     .operand3 = 0,					
                   };
 	
@@ -46,7 +45,7 @@ void test_iORWF_save_in_file_register() {
 	TEST_ASSERT_EQUAL_HEX8(0x46,FSR[code.operand1]);
 }
 
-void test_iORWF_save_in_BSR() {
+void test_iORWF_if_operand2_equal_0_and_operand3_equal_1() {
   // Create test fixture
   Instruction inst = {
                       .mnemonic = XORWF,
@@ -54,20 +53,18 @@ void test_iORWF_save_in_BSR() {
                      };	
   Bytecode code = { .instruction = &inst,
                     .operand1 =	0x34,  //address of file select register
-                    .operand2 =	1, 	  // this is select which case need to be toggle;
-                    .operand3 = 10,					
+                    .operand2 =	0, 	  // this is select which case need to be toggle;
+                    .operand3 = 1,					
                   };
-	
-	FSR[code.operand1] = 0xA8;
+	FSR[BSR]= 0x01;
+	FSR[(FSR[BSR]<<8)+code.operand1] = 0xA8;
 	FSR[WREG] = 0x11;
 	
 	xorwf(&code);
-
-	TEST_ASSERT_EQUAL_HEX8(0x0A,code.operand3);
-	TEST_ASSERT_EQUAL_HEX8(0x46,FSR[BSR]);
+	TEST_ASSERT_EQUAL_HEX8(0x46,FSR[WREG]);
 }
 
-void test_iORWF_save_in_access_bank() {
+void test_iORWF_if_operand2_equal_1_and_operand3_equal_1() {
   // Create test fixture
   Instruction inst = {
                       .mnemonic = XORWF,
@@ -76,14 +73,13 @@ void test_iORWF_save_in_access_bank() {
   Bytecode code = { .instruction = &inst,
                     .operand1 =	0x34,  //address of file select register
                     .operand2 =	1, 	  // this is select which case need to be toggle;
-                    .operand3 = 0,					
+                    .operand3 = 1,					
                   };
 	
-	FSR[code.operand1] = 0xA8;
+	FSR[BSR]= 0x01;
+	FSR[(FSR[BSR]<<8)+code.operand1] = 0xA8;
 	FSR[WREG] = 0x11;
 	
 	xorwf(&code);
-
-	TEST_ASSERT_EQUAL(0,code.operand3);
 	TEST_ASSERT_EQUAL_HEX8(0x46,FSR[code.operand1]);
 }
