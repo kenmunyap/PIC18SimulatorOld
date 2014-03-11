@@ -3,14 +3,18 @@
   :path: test
   :file: test_MullwOperation.c
 :successes:
-- :test: test_Mullw_store_into_PRODH_and_PRODL
+- :test: test_mullw_operand1_is_over_0_or_255
   :line: 9
+  :message: ''
+- :test: test_mullw_store_into_PRODH_and_PRODL
+  :line: 29
   :message: ''
 :failures: []
 :ignores: []
 :counts:
-  :total: 1
-  :passed: 1
+  :total: 2
+  :passed: 2
   :failed: 0
   :ignored: 0
-:stdout: []
+:stdout:
+- Your file register is over ranged!

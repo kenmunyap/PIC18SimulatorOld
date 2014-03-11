@@ -8,8 +8,11 @@
   Unity.NumberOfTests++; \
   if (TEST_PROTECT()) \
   { \
+    CEXCEPTION_T e; \
+    Try { \
       setUp(); \
       TestFunc(); \
+    } Catch(e) { TEST_ASSERT_EQUAL_HEX32_MESSAGE(CEXCEPTION_NONE, e, "Unhandled Exception!"); } \
   } \
   if (TEST_PROTECT() && !TEST_IS_IGNORED) \
   { \
@@ -22,6 +25,7 @@
 #include "unity.h"
 #include <setjmp.h>
 #include <stdio.h>
+#include "CException.h"
 
 int GlobalExpectCount;
 int GlobalVerifyOrder;
@@ -30,7 +34,8 @@ char* GlobalOrderError;
 //=======External Functions This Runner Calls=====
 extern void setUp(void);
 extern void tearDown(void);
-extern void test_Mullw_store_into_PRODH_and_PRODL(void);
+extern void test_mullw_operand1_is_over_0_or_255(void);
+extern void test_mullw_store_into_PRODH_and_PRODL(void);
 
 
 //=======Test Reset Option=====
@@ -46,7 +51,8 @@ int main(void)
 {
   Unity.TestFile = "test_MullwOperation.c";
   UnityBegin();
-  RUN_TEST(test_Mullw_store_into_PRODH_and_PRODL, 9);
+  RUN_TEST(test_mullw_operand1_is_over_0_or_255, 9);
+  RUN_TEST(test_mullw_store_into_PRODH_and_PRODL, 29);
 
   return (UnityEnd());
 }

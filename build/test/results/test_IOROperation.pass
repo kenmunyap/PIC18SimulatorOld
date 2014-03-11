@@ -3,23 +3,31 @@
   :path: test
   :file: test_IOROperation.c
 :successes:
-- :test: test_iORWF_if_operand2_and_operand3_equal_to_0
-  :line: 8
+- :test: test_iorwf_file_over_0_or_255
+  :line: 9
   :message: ''
-- :test: test_iORWF_if_operand2_equal_to_1_and_operand3_equal_to_0
-  :line: 29
+- :test: test_iorwf_operand2_0_in_wreg_and_operand3_0_access_bank
+  :line: 30
   :message: ''
-- :test: test_iORWF_if_operand2_equal_0_and_operand3_equal_to_1
-  :line: 49
+- :test: test_iorwf_operand2_1_in_file_register_and_operand3_0_access_bank
+  :line: 51
   :message: ''
-- :test: test_iORWF_if_operand2_operand3_equal_to_1
-  :line: 70
+- :test: test_iorwf_operand2_0_in_wreg_and_operand3_1_bank_select_register
+  :line: 72
+  :message: ''
+- :test: test_iorwf_operand2_1_in_file_register_and_operand3_1_bank_select_register
+  :line: 94
+  :message: ''
+- :test: test_iorwf_bsr_over_15
+  :line: 114
   :message: ''
 :failures: []
 :ignores: []
 :counts:
-  :total: 4
-  :passed: 4
+  :total: 6
+  :passed: 6
   :failed: 0
   :ignored: 0
-:stdout: []
+:stdout:
+- The file is overanged!
+- Over BSR range!!

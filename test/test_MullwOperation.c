@@ -2,11 +2,31 @@
 #include "Bytecode.h"
 #include "Mullw.h"
 #include <inttypes.h>
-	
+#include "CException.h"
 void setUp() {}
 void tearDown() {}
 
-void test_Mullw_store_into_PRODH_and_PRODL(){
+void test_mullw_operand1_is_over_0_or_255(){
+  // Create test fixture
+  Instruction inst = {
+                      .mnemonic = MULLW,
+                      .name = "mullw"
+                     };	
+  Bytecode code = { .instruction = &inst,
+                    .operand1 =	0xfff,  
+                    .operand2 =	0, 	  
+                    .operand3 = 0,					
+                  };
+	int error;
+	int overRange;
+	Try{
+		mullw(&code);
+	}Catch(error){
+		printf("Your file register is over ranged!\n");
+		TEST_ASSERT_NOT_EQUAL(overRange,error);
+	}
+}
+void test_mullw_store_into_PRODH_and_PRODL(){
 
   // Create test fixture
   Instruction inst = {

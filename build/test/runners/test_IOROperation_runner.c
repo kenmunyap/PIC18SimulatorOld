@@ -8,8 +8,11 @@
   Unity.NumberOfTests++; \
   if (TEST_PROTECT()) \
   { \
+    CEXCEPTION_T e; \
+    Try { \
       setUp(); \
       TestFunc(); \
+    } Catch(e) { TEST_ASSERT_EQUAL_HEX32_MESSAGE(CEXCEPTION_NONE, e, "Unhandled Exception!"); } \
   } \
   if (TEST_PROTECT() && !TEST_IS_IGNORED) \
   { \
@@ -22,6 +25,7 @@
 #include "unity.h"
 #include <setjmp.h>
 #include <stdio.h>
+#include "CException.h"
 
 int GlobalExpectCount;
 int GlobalVerifyOrder;
@@ -30,10 +34,12 @@ char* GlobalOrderError;
 //=======External Functions This Runner Calls=====
 extern void setUp(void);
 extern void tearDown(void);
-extern void test_iORWF_if_operand2_and_operand3_equal_to_0(void);
-extern void test_iORWF_if_operand2_equal_to_1_and_operand3_equal_to_0(void);
-extern void test_iORWF_if_operand2_equal_0_and_operand3_equal_to_1(void);
-extern void test_iORWF_if_operand2_operand3_equal_to_1(void);
+extern void test_iorwf_file_over_0_or_255(void);
+extern void test_iorwf_operand2_0_in_wreg_and_operand3_0_access_bank(void);
+extern void test_iorwf_operand2_1_in_file_register_and_operand3_0_access_bank(void);
+extern void test_iorwf_operand2_0_in_wreg_and_operand3_1_bank_select_register(void);
+extern void test_iorwf_operand2_1_in_file_register_and_operand3_1_bank_select_register(void);
+extern void test_iorwf_bsr_over_15(void);
 
 
 //=======Test Reset Option=====
@@ -49,10 +55,12 @@ int main(void)
 {
   Unity.TestFile = "test_IOROperation.c";
   UnityBegin();
-  RUN_TEST(test_iORWF_if_operand2_and_operand3_equal_to_0, 8);
-  RUN_TEST(test_iORWF_if_operand2_equal_to_1_and_operand3_equal_to_0, 29);
-  RUN_TEST(test_iORWF_if_operand2_equal_0_and_operand3_equal_to_1, 49);
-  RUN_TEST(test_iORWF_if_operand2_operand3_equal_to_1, 70);
+  RUN_TEST(test_iorwf_file_over_0_or_255, 9);
+  RUN_TEST(test_iorwf_operand2_0_in_wreg_and_operand3_0_access_bank, 30);
+  RUN_TEST(test_iorwf_operand2_1_in_file_register_and_operand3_0_access_bank, 51);
+  RUN_TEST(test_iorwf_operand2_0_in_wreg_and_operand3_1_bank_select_register, 72);
+  RUN_TEST(test_iorwf_operand2_1_in_file_register_and_operand3_1_bank_select_register, 94);
+  RUN_TEST(test_iorwf_bsr_over_15, 114);
 
   return (UnityEnd());
 }

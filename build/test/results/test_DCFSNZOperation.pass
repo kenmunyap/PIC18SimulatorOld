@@ -1,0 +1,16 @@
+---
+:source:
+  :path: test
+  :file: test_DCFSNZOperation.c
+:successes:
+- :test: test_iORWF_if_operand2_and_operand3_equal_to_0
+  :line: 8
+  :message: ''
+:failures: []
+:ignores: []
+:counts:
+  :total: 1
+  :passed: 1
+  :failed: 0
+  :ignored: 0
+:stdout: []

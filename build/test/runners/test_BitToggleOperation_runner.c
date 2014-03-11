@@ -8,8 +8,11 @@
   Unity.NumberOfTests++; \
   if (TEST_PROTECT()) \
   { \
+    CEXCEPTION_T e; \
+    Try { \
       setUp(); \
       TestFunc(); \
+    } Catch(e) { TEST_ASSERT_EQUAL_HEX32_MESSAGE(CEXCEPTION_NONE, e, "Unhandled Exception!"); } \
   } \
   if (TEST_PROTECT() && !TEST_IS_IGNORED) \
   { \
@@ -22,6 +25,7 @@
 #include "unity.h"
 #include <setjmp.h>
 #include <stdio.h>
+#include "CException.h"
 
 int GlobalExpectCount;
 int GlobalVerifyOrder;
@@ -30,10 +34,22 @@ char* GlobalOrderError;
 //=======External Functions This Runner Calls=====
 extern void setUp(void);
 extern void tearDown(void);
-extern void test_bitToggle_if_operand3_equal_0_toggle_first(void);
-extern void test_bitToggle_if_operand3_equal_0_toggle_last(void);
-extern void test_bitToggle_if_operand3_equal_1_toggle_first(void);
-extern void test_bitToggle_if_operand3_equal_1_toggle_last(void);
+extern void test_btg_operand1_is_over_0_or_255(void);
+extern void test_btg_operand2_select_bit_0_and_operand3_0_access_bank(void);
+extern void test_btg_operand2_select_bit_1_and_operand3_0_access_bank(void);
+extern void test_btg_operand2_select_bit_3_and_operand3_0_access_bank(void);
+extern void test_btg_operand2_select_bit_4_and_operand3_0_access_bank(void);
+extern void test_btg_operand2_select_bit_5_and_operand3_0_access_bank(void);
+extern void test_btg_operand2_select_bit_6_and_operand3_0_access_bank(void);
+extern void test_btg_operand2_select_bit_7_and_operand3_0_access_bank(void);
+extern void test_btg_operand2_select_bit_0_and_operand3_1_bank_selecter_register(void);
+extern void test_btg_operand2_select_bit_1_and_operand3_1_bank_selecter_register(void);
+extern void test_btg_operand2_select_bit_2_and_operand3_1_bank_selecter_register(void);
+extern void test_btg_operand2_select_bit_3_and_operand3_1_bank_selecter_register(void);
+extern void test_btg_operand2_select_bit_4_and_operand3_1_bank_selecter_register(void);
+extern void test_btg_operand2_select_bit_5_and_operand3_1_bank_selecter_register(void);
+extern void test_btg_operand2_select_bit_6_and_operand3_1_bank_selecter_register(void);
+extern void test_btg_operand2_select_bit_7_and_operand3_1_bank_selecter_register(void);
 
 
 //=======Test Reset Option=====
@@ -49,10 +65,22 @@ int main(void)
 {
   Unity.TestFile = "test_BitToggleOperation.c";
   UnityBegin();
-  RUN_TEST(test_bitToggle_if_operand3_equal_0_toggle_first, 8);
-  RUN_TEST(test_bitToggle_if_operand3_equal_0_toggle_last, 28);
-  RUN_TEST(test_bitToggle_if_operand3_equal_1_toggle_first, 48);
-  RUN_TEST(test_bitToggle_if_operand3_equal_1_toggle_last, 68);
+  RUN_TEST(test_btg_operand1_is_over_0_or_255, 9);
+  RUN_TEST(test_btg_operand2_select_bit_0_and_operand3_0_access_bank, 30);
+  RUN_TEST(test_btg_operand2_select_bit_1_and_operand3_0_access_bank, 49);
+  RUN_TEST(test_btg_operand2_select_bit_3_and_operand3_0_access_bank, 68);
+  RUN_TEST(test_btg_operand2_select_bit_4_and_operand3_0_access_bank, 87);
+  RUN_TEST(test_btg_operand2_select_bit_5_and_operand3_0_access_bank, 106);
+  RUN_TEST(test_btg_operand2_select_bit_6_and_operand3_0_access_bank, 125);
+  RUN_TEST(test_btg_operand2_select_bit_7_and_operand3_0_access_bank, 144);
+  RUN_TEST(test_btg_operand2_select_bit_0_and_operand3_1_bank_selecter_register, 163);
+  RUN_TEST(test_btg_operand2_select_bit_1_and_operand3_1_bank_selecter_register, 185);
+  RUN_TEST(test_btg_operand2_select_bit_2_and_operand3_1_bank_selecter_register, 206);
+  RUN_TEST(test_btg_operand2_select_bit_3_and_operand3_1_bank_selecter_register, 226);
+  RUN_TEST(test_btg_operand2_select_bit_4_and_operand3_1_bank_selecter_register, 246);
+  RUN_TEST(test_btg_operand2_select_bit_5_and_operand3_1_bank_selecter_register, 266);
+  RUN_TEST(test_btg_operand2_select_bit_6_and_operand3_1_bank_selecter_register, 286);
+  RUN_TEST(test_btg_operand2_select_bit_7_and_operand3_1_bank_selecter_register, 306);
 
   return (UnityEnd());
 }
