@@ -7,19 +7,19 @@
   :line: 9
   :message: ''
 - :test: test_xorwf_operand2_0_in_wreg_and_operand3_0_access_bank
-  :line: 31
+  :line: 30
   :message: ''
 - :test: test_xorwf_operand2_1_in_wreg_and_operand3_0_access_bank
-  :line: 51
+  :line: 50
   :message: ''
 - :test: test_xorwf_operand2_0_in_wreg_and_operand3_1_access_bank
-  :line: 71
+  :line: 70
   :message: ''
 - :test: test_xorwf_operand2_1_in_wreg_and_operand3_1_access_bank
-  :line: 90
+  :line: 89
   :message: ''
 - :test: test_xorwf_bsr_over_15
-  :line: 110
+  :line: 109
   :message: ''
 :failures: []
 :ignores: []

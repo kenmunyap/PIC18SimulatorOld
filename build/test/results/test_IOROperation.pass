@@ -6,26 +6,32 @@
 - :test: test_iorwf_file_over_0_or_255
   :line: 9
   :message: ''
+- :test: test_iorwf_operand2_negative_one_and_operand3_negative_one
+  :line: 29
+  :message: ''
+- :test: test_iorwf_operand2_0_wreg_and_operand3_negative_one
+  :line: 50
+  :message: ''
 - :test: test_iorwf_operand2_0_in_wreg_and_operand3_0_access_bank
-  :line: 30
+  :line: 70
   :message: ''
 - :test: test_iorwf_operand2_1_in_file_register_and_operand3_0_access_bank
-  :line: 51
+  :line: 91
   :message: ''
 - :test: test_iorwf_operand2_0_in_wreg_and_operand3_1_bank_select_register
-  :line: 72
+  :line: 112
   :message: ''
 - :test: test_iorwf_operand2_1_in_file_register_and_operand3_1_bank_select_register
-  :line: 94
+  :line: 134
   :message: ''
 - :test: test_iorwf_bsr_over_15
-  :line: 114
+  :line: 154
   :message: ''
 :failures: []
 :ignores: []
 :counts:
-  :total: 6
-  :passed: 6
+  :total: 8
+  :passed: 8
   :failed: 0
   :ignored: 0
 :stdout:

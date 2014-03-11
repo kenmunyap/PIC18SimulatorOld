@@ -2,6 +2,7 @@
 #include "Bytecode.h"
 #include "BitToggle.h"
 #include "CException.h"
+
 void setUp() {}
 void tearDown() {}
 
@@ -17,14 +18,32 @@ void test_btg_operand1_is_over_0_or_255(){
                     .operand2 =	0, 	  
                     .operand3 = 0,					
                   };
-	int error;
-	int overRange;
+	errorException error;
 	Try{
 		bitToggle(&code);
 	}Catch(error){
 		printf("Your file register is over ranged!\n");
-		TEST_ASSERT_NOT_EQUAL(overRange,error);
+		TEST_ASSERT_EQUAL(overRange,error);
 	}
+}
+
+void test_btg_operand2_select_bit_negative_one_and_operand3_negative_one(){
+  // Create test fixture
+  Instruction inst = {
+                      .mnemonic = BTG,
+                      .name = "btg"
+                     };	
+  Bytecode code = { .instruction = &inst,
+                    .operand1 =	0x43,  
+                    .operand2 =	-1, 	  
+                    .operand3 = -1,					
+                  };
+				  
+	FSR[code.operand1]=0x10;
+	
+	bitToggle(&code);
+
+	TEST_ASSERT_EQUAL_HEX8(0x10,FSR[code.operand1]);  
 }
 
 void test_btg_operand2_select_bit_0_and_operand3_0_access_bank(){

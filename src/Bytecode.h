@@ -2,6 +2,11 @@
 #define	__BYTECODE_H__
 
 typedef enum 	{
+					overRange,
+					bsrRange,
+				} errorException;
+
+typedef enum 	{
 					
 					BTG,
 					MULLW,

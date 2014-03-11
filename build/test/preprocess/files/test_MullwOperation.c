@@ -30,9 +30,7 @@ void test_mullw_operand1_is_over_0_or_255(){
 
                   };
 
- int error;
-
- int overRange;
+ errorException error;
 
  { jmp_buf *PrevFrame, NewFrame; unsigned int MY_ID = (0); PrevFrame = CExceptionFrames[(0)].pFrame; CExceptionFrames[MY_ID].pFrame = (jmp_buf*)(&NewFrame); CExceptionFrames[MY_ID].Exception = (0x5A5A5A5A); if (_setjmp(NewFrame) == 0) { if (&PrevFrame){
 
@@ -42,11 +40,13 @@ void test_mullw_operand1_is_over_0_or_255(){
 
   printf("Your file register is over ranged!\n");
 
-  if (((overRange) != (error))) {} else {UnityFail( (" Expected Not-Equal"), (_U_UINT)(_U_UINT)26);;};
+  UnityAssertEqualNumber((_U_SINT)((overRange)), (_U_SINT)((error)), (((void *)0)), (_U_UINT)25, UNITY_DISPLAY_STYLE_INT);
 
  }
 
 }
+
+
 
 void test_mullw_store_into_PRODH_and_PRODL(){
 

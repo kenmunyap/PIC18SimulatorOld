@@ -56,11 +56,11 @@ int main(void)
   Unity.TestFile = "test_XOROperation.c";
   UnityBegin();
   RUN_TEST(test_xorwf_file_over_0_or_255, 9);
-  RUN_TEST(test_xorwf_operand2_0_in_wreg_and_operand3_0_access_bank, 31);
-  RUN_TEST(test_xorwf_operand2_1_in_wreg_and_operand3_0_access_bank, 51);
-  RUN_TEST(test_xorwf_operand2_0_in_wreg_and_operand3_1_access_bank, 71);
-  RUN_TEST(test_xorwf_operand2_1_in_wreg_and_operand3_1_access_bank, 90);
-  RUN_TEST(test_xorwf_bsr_over_15, 110);
+  RUN_TEST(test_xorwf_operand2_0_in_wreg_and_operand3_0_access_bank, 30);
+  RUN_TEST(test_xorwf_operand2_1_in_wreg_and_operand3_0_access_bank, 50);
+  RUN_TEST(test_xorwf_operand2_0_in_wreg_and_operand3_1_access_bank, 70);
+  RUN_TEST(test_xorwf_operand2_1_in_wreg_and_operand3_1_access_bank, 89);
+  RUN_TEST(test_xorwf_bsr_over_15, 109);
 
   return (UnityEnd());
 }

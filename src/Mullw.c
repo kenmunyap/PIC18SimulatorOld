@@ -11,7 +11,6 @@ void  mullw(Bytecode *code) {
 	int maskH = 0xFF00;
 	int maskL = 0x00FF;
 	int temp1;
-	int overRange;
 	if(code->operand1 <= 0 || code->operand1 >= 255){
 				Throw(overRange);
 	}

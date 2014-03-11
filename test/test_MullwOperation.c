@@ -17,15 +17,15 @@ void test_mullw_operand1_is_over_0_or_255(){
                     .operand2 =	0, 	  
                     .operand3 = 0,					
                   };
-	int error;
-	int overRange;
+	errorException error;
 	Try{
 		mullw(&code);
 	}Catch(error){
 		printf("Your file register is over ranged!\n");
-		TEST_ASSERT_NOT_EQUAL(overRange,error);
+		TEST_ASSERT_EQUAL(overRange,error);
 	}
 }
+
 void test_mullw_store_into_PRODH_and_PRODL(){
 
   // Create test fixture
@@ -45,3 +45,4 @@ void test_mullw_store_into_PRODH_and_PRODL(){
 	TEST_ASSERT_EQUAL_HEX8(0xAD,FSR[PRODH]);
 	TEST_ASSERT_EQUAL_HEX8(0x08,FSR[PRODL]);	
 }
+

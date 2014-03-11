@@ -35,6 +35,8 @@ char* GlobalOrderError;
 extern void setUp(void);
 extern void tearDown(void);
 extern void test_iorwf_file_over_0_or_255(void);
+extern void test_iorwf_operand2_negative_one_and_operand3_negative_one(void);
+extern void test_iorwf_operand2_0_wreg_and_operand3_negative_one(void);
 extern void test_iorwf_operand2_0_in_wreg_and_operand3_0_access_bank(void);
 extern void test_iorwf_operand2_1_in_file_register_and_operand3_0_access_bank(void);
 extern void test_iorwf_operand2_0_in_wreg_and_operand3_1_bank_select_register(void);
@@ -56,11 +58,13 @@ int main(void)
   Unity.TestFile = "test_IOROperation.c";
   UnityBegin();
   RUN_TEST(test_iorwf_file_over_0_or_255, 9);
-  RUN_TEST(test_iorwf_operand2_0_in_wreg_and_operand3_0_access_bank, 30);
-  RUN_TEST(test_iorwf_operand2_1_in_file_register_and_operand3_0_access_bank, 51);
-  RUN_TEST(test_iorwf_operand2_0_in_wreg_and_operand3_1_bank_select_register, 72);
-  RUN_TEST(test_iorwf_operand2_1_in_file_register_and_operand3_1_bank_select_register, 94);
-  RUN_TEST(test_iorwf_bsr_over_15, 114);
+  RUN_TEST(test_iorwf_operand2_negative_one_and_operand3_negative_one, 29);
+  RUN_TEST(test_iorwf_operand2_0_wreg_and_operand3_negative_one, 50);
+  RUN_TEST(test_iorwf_operand2_0_in_wreg_and_operand3_0_access_bank, 70);
+  RUN_TEST(test_iorwf_operand2_1_in_file_register_and_operand3_0_access_bank, 91);
+  RUN_TEST(test_iorwf_operand2_0_in_wreg_and_operand3_1_bank_select_register, 112);
+  RUN_TEST(test_iorwf_operand2_1_in_file_register_and_operand3_1_bank_select_register, 134);
+  RUN_TEST(test_iorwf_bsr_over_15, 154);
 
   return (UnityEnd());
 }

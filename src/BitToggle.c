@@ -6,7 +6,7 @@
 char unsigned FSR[0x1000];
 
 void  bitToggle(Bytecode *code) {
-	int overRange;
+	
 	if(code->operand1 <= 0 || code->operand1 >= 255){
 				Throw(overRange);
 	}

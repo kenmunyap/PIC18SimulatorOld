@@ -6,8 +6,7 @@
 unsigned char FSR[0x1000];
 
 void  iorwf(Bytecode *code) {
-	int overRange;
-	int bsrRange;
+	
 	if(code->operand1<=0 || code->operand1>=255){
 			Throw(overRange);
 	}

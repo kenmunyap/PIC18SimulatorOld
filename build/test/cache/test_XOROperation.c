@@ -14,9 +14,7 @@ void test_xorwf_file_over_0_or_255() {
 
 
 
-  int error;
 
-  int overRange;
 
   Instruction inst = {
 
@@ -36,7 +34,7 @@ void test_xorwf_file_over_0_or_255() {
 
                   };
 
-
+ errorException error;
 
  { jmp_buf *PrevFrame, NewFrame; unsigned int MY_ID = (0); PrevFrame = CExceptionFrames[(0)].pFrame; CExceptionFrames[MY_ID].pFrame = (jmp_buf*)(&NewFrame); CExceptionFrames[MY_ID].Exception = (0x5A5A5A5A); if (_setjmp(NewFrame) == 0) { if (&PrevFrame){
 
@@ -46,7 +44,7 @@ void test_xorwf_file_over_0_or_255() {
 
   printf("The file is overanged!\n");
 
-  if (((overRange) != (error))) {} else {UnityFail( (" Expected Not-Equal"), (_U_UINT)(_U_UINT)27);;};
+  UnityAssertEqualNumber((_U_SINT)((overRange)), (_U_SINT)((error)), (((void *)0)), (_U_UINT)26, UNITY_DISPLAY_STYLE_INT);
 
  }
 
@@ -88,7 +86,7 @@ void test_xorwf_operand2_0_in_wreg_and_operand3_0_access_bank() {
 
 
 
- UnityAssertEqualNumber((_U_SINT)(_US8 )((0xA8)), (_U_SINT)(_US8 )((FSR[0xf8b])), (((void *)0)), (_U_UINT)48, UNITY_DISPLAY_STYLE_HEX8);
+ UnityAssertEqualNumber((_U_SINT)(_US8 )((0xA8)), (_U_SINT)(_US8 )((FSR[0xf8b])), (((void *)0)), (_U_UINT)47, UNITY_DISPLAY_STYLE_HEX8);
 
 }
 
@@ -128,7 +126,7 @@ void test_xorwf_operand2_1_in_wreg_and_operand3_0_access_bank() {
 
 
 
- UnityAssertEqualNumber((_U_SINT)(_US8 )((0x46)), (_U_SINT)(_US8 )((FSR[code.operand1])), (((void *)0)), (_U_UINT)68, UNITY_DISPLAY_STYLE_HEX8);
+ UnityAssertEqualNumber((_U_SINT)(_US8 )((0x46)), (_U_SINT)(_US8 )((FSR[code.operand1])), (((void *)0)), (_U_UINT)67, UNITY_DISPLAY_STYLE_HEX8);
 
 }
 
@@ -166,7 +164,7 @@ void test_xorwf_operand2_0_in_wreg_and_operand3_1_access_bank() {
 
  xorwf(&code);
 
- UnityAssertEqualNumber((_U_SINT)(_US8 )((0x46)), (_U_SINT)(_US8 )((FSR[0xf8b])), (((void *)0)), (_U_UINT)87, UNITY_DISPLAY_STYLE_HEX8);
+ UnityAssertEqualNumber((_U_SINT)(_US8 )((0x46)), (_U_SINT)(_US8 )((FSR[0xf8b])), (((void *)0)), (_U_UINT)86, UNITY_DISPLAY_STYLE_HEX8);
 
 }
 
@@ -206,7 +204,7 @@ void test_xorwf_operand2_1_in_wreg_and_operand3_1_access_bank() {
 
  xorwf(&code);
 
- UnityAssertEqualNumber((_U_SINT)(_US8 )((0x46)), (_U_SINT)(_US8 )((FSR[code.operand1])), (((void *)0)), (_U_UINT)107, UNITY_DISPLAY_STYLE_HEX8);
+ UnityAssertEqualNumber((_U_SINT)(_US8 )((0x46)), (_U_SINT)(_US8 )((FSR[code.operand1])), (((void *)0)), (_U_UINT)106, UNITY_DISPLAY_STYLE_HEX8);
 
 }
 
@@ -216,9 +214,7 @@ void test_xorwf_bsr_over_15(){
 
 
 
-  int bsrRange;
 
-  int bsrOverRange;
 
   Instruction inst = {
 
@@ -244,17 +240,17 @@ void test_xorwf_bsr_over_15(){
 
  FSR[0xfE0] = 0x1f;
 
-
+ errorException bsrError;
 
  { jmp_buf *PrevFrame, NewFrame; unsigned int MY_ID = (0); PrevFrame = CExceptionFrames[(0)].pFrame; CExceptionFrames[MY_ID].pFrame = (jmp_buf*)(&NewFrame); CExceptionFrames[MY_ID].Exception = (0x5A5A5A5A); if (_setjmp(NewFrame) == 0) { if (&PrevFrame){
 
   xorwf(&code);
 
- }else { } CExceptionFrames[MY_ID].Exception = (0x5A5A5A5A); } else { bsrOverRange = CExceptionFrames[MY_ID].Exception; bsrOverRange=bsrOverRange; } CExceptionFrames[MY_ID].pFrame = PrevFrame; } if (CExceptionFrames[(0)].Exception != (0x5A5A5A5A)){
+ }else { } CExceptionFrames[MY_ID].Exception = (0x5A5A5A5A); } else { bsrError = CExceptionFrames[MY_ID].Exception; bsrError=bsrError; } CExceptionFrames[MY_ID].pFrame = PrevFrame; } if (CExceptionFrames[(0)].Exception != (0x5A5A5A5A)){
 
   printf("Over BSR range!!\n");
 
-  if (((bsrRange) != (bsrOverRange))) {} else {UnityFail( (" Expected Not-Equal"), (_U_UINT)(_U_UINT)131);;};
+  UnityAssertEqualNumber((_U_SINT)((bsrRange)), (_U_SINT)((bsrError)), (((void *)0)), (_U_UINT)129, UNITY_DISPLAY_STYLE_INT);
 
  }
 

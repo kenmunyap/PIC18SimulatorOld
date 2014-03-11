@@ -6,8 +6,7 @@
 char FSR[0x1000];
 
 void  xorwf(Bytecode *code) {
-		int bsrRange;
-		int overRange;
+		
 		if(code->operand1 <= 0 || code->operand1 >= 255){
 				Throw(overRange);
 		}

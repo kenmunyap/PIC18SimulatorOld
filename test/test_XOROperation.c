@@ -8,8 +8,7 @@ void tearDown() {}
 
 void test_xorwf_file_over_0_or_255() {
   // Create test fixture
-  int error;
-  int overRange;
+ 
   Instruction inst = {
                       .mnemonic = XORWF,
                       .name = "xorwf"
@@ -19,12 +18,12 @@ void test_xorwf_file_over_0_or_255() {
                     .operand2 =	0, 	  
                     .operand3 = 0,					
                   };
-	
+	errorException error;
 	Try{
 		xorwf(&code);
 	}Catch(error){
 		printf("The file is overanged!\n");
-		TEST_ASSERT_NOT_EQUAL(overRange,error);
+		TEST_ASSERT_EQUAL(overRange,error);
 	}
 }
 
@@ -109,8 +108,7 @@ void test_xorwf_operand2_1_in_wreg_and_operand3_1_access_bank() {
 
 void test_xorwf_bsr_over_15(){
   // Create test fixture
-  int bsrRange;
-  int bsrOverRange;
+
   Instruction inst = {
                       .mnemonic = XORWF,
                       .name = "xorwf"
@@ -123,12 +121,12 @@ void test_xorwf_bsr_over_15(){
 	
 
 	FSR[BSR] = 0x1f;
-	
+	errorException bsrError;
 	Try{
 		xorwf(&code);
-	}Catch(bsrOverRange){
+	}Catch(bsrError){
 		printf("Over BSR range!!\n");
-		TEST_ASSERT_NOT_EQUAL(bsrRange,bsrOverRange);
+		TEST_ASSERT_EQUAL(bsrRange,bsrError);
 	}
 	
 }
