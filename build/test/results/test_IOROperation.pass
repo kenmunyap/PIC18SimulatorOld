@@ -4,36 +4,82 @@
   :file: test_IOROperation.c
 :successes:
 - :test: test_iorwf_file_over_0_or_255
-  :line: 9
+  :line: 11
+  :message: ''
+- :test: test_iorwf_operand2_is_0_bsr_out_of_range_should_throw_error
+  :line: 30
+  :message: ''
+- :test: test_iorwf_operand2_is_3_should_throw_error
+  :line: 52
+  :message: ''
+- :test: test_iorwf_operand2_is_negative_six_should_throw_error
+  :line: 75
+  :message: ''
+- :test: test_iorwf_operand3_should_throw_error_with_value_negative_two
+  :line: 97
+  :message: ''
+- :test: test_iorwf_operand3_should_throw_error_with_value_negative_three
+  :line: 119
+  :message: ''
+- :test: test_iorwf_operand3_should_throw_error_with_W
+  :line: 141
+  :message: ''
+- :test: test_iorwf_operand3_should_throw_error_with_F
+  :line: 163
+  :message: ''
+- :test: test_iorwf_operand2_is_1_bsr_out_of_range_should_throw_error
+  :line: 185
   :message: ''
 - :test: test_iorwf_operand2_negative_one_and_operand3_negative_one
-  :line: 29
+  :line: 207
   :message: ''
 - :test: test_iorwf_operand2_0_wreg_and_operand3_negative_one
-  :line: 50
+  :line: 227
+  :message: ''
+- :test: test_iorwf_operand2_negative_one_and_operand3_0
+  :line: 246
   :message: ''
 - :test: test_iorwf_operand2_0_in_wreg_and_operand3_0_access_bank
-  :line: 70
+  :line: 266
   :message: ''
 - :test: test_iorwf_operand2_1_in_file_register_and_operand3_0_access_bank
-  :line: 91
+  :line: 286
   :message: ''
 - :test: test_iorwf_operand2_0_in_wreg_and_operand3_1_bank_select_register
-  :line: 112
+  :line: 305
   :message: ''
-- :test: test_iorwf_operand2_1_in_file_register_and_operand3_1_bank_select_register
-  :line: 134
+- :test: test_iorwf_operand2_1_in_file_register_and_operand3_banked_keyword
+  :line: 327
   :message: ''
-- :test: test_iorwf_bsr_over_15
-  :line: 154
+- :test: test_iorwf_operand2_W_in_file_register_and_operand3_access
+  :line: 346
+  :message: ''
+- :test: test_iorwf_operand2_F_in_file_register_and_operand3_access
+  :line: 364
+  :message: ''
+- :test: test_iorwf_operand2_1_in_file_register_and_operand3_access
+  :line: 382
+  :message: ''
+- :test: test_iorwf_operand2_F_in_file_register_and_operand3_banked_keyword
+  :line: 400
+  :message: ''
+- :test: test_iorwf_operand2_W_in_file_register_and_operand3_banked_keyword
+  :line: 419
   :message: ''
 :failures: []
 :ignores: []
 :counts:
-  :total: 8
-  :passed: 8
+  :total: 21
+  :passed: 21
   :failed: 0
   :ignored: 0
 :stdout:
 - The file is overanged!
-- Over BSR range!!
+- Overed BSR range!
+- operand2 is over value!
+- operand2 is over value!
+- operand3 cannot put -2!
+- operand3 cannot put -3!
+- operand3 cannot put W!
+- operand3 cannot put F!
+- Overed BSR range!

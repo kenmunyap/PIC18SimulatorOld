@@ -35,13 +35,26 @@ char* GlobalOrderError;
 extern void setUp(void);
 extern void tearDown(void);
 extern void test_iorwf_file_over_0_or_255(void);
+extern void test_iorwf_operand2_is_0_bsr_out_of_range_should_throw_error(void);
+extern void test_iorwf_operand2_is_3_should_throw_error(void);
+extern void test_iorwf_operand2_is_negative_six_should_throw_error(void);
+extern void test_iorwf_operand3_should_throw_error_with_value_negative_two(void);
+extern void test_iorwf_operand3_should_throw_error_with_value_negative_three(void);
+extern void test_iorwf_operand3_should_throw_error_with_W(void);
+extern void test_iorwf_operand3_should_throw_error_with_F(void);
+extern void test_iorwf_operand2_is_1_bsr_out_of_range_should_throw_error(void);
 extern void test_iorwf_operand2_negative_one_and_operand3_negative_one(void);
 extern void test_iorwf_operand2_0_wreg_and_operand3_negative_one(void);
+extern void test_iorwf_operand2_negative_one_and_operand3_0(void);
 extern void test_iorwf_operand2_0_in_wreg_and_operand3_0_access_bank(void);
 extern void test_iorwf_operand2_1_in_file_register_and_operand3_0_access_bank(void);
 extern void test_iorwf_operand2_0_in_wreg_and_operand3_1_bank_select_register(void);
-extern void test_iorwf_operand2_1_in_file_register_and_operand3_1_bank_select_register(void);
-extern void test_iorwf_bsr_over_15(void);
+extern void test_iorwf_operand2_1_in_file_register_and_operand3_banked_keyword(void);
+extern void test_iorwf_operand2_W_in_file_register_and_operand3_access(void);
+extern void test_iorwf_operand2_F_in_file_register_and_operand3_access(void);
+extern void test_iorwf_operand2_1_in_file_register_and_operand3_access(void);
+extern void test_iorwf_operand2_F_in_file_register_and_operand3_banked_keyword(void);
+extern void test_iorwf_operand2_W_in_file_register_and_operand3_banked_keyword(void);
 
 
 //=======Test Reset Option=====
@@ -57,14 +70,27 @@ int main(void)
 {
   Unity.TestFile = "test_IOROperation.c";
   UnityBegin();
-  RUN_TEST(test_iorwf_file_over_0_or_255, 9);
-  RUN_TEST(test_iorwf_operand2_negative_one_and_operand3_negative_one, 29);
-  RUN_TEST(test_iorwf_operand2_0_wreg_and_operand3_negative_one, 50);
-  RUN_TEST(test_iorwf_operand2_0_in_wreg_and_operand3_0_access_bank, 70);
-  RUN_TEST(test_iorwf_operand2_1_in_file_register_and_operand3_0_access_bank, 91);
-  RUN_TEST(test_iorwf_operand2_0_in_wreg_and_operand3_1_bank_select_register, 112);
-  RUN_TEST(test_iorwf_operand2_1_in_file_register_and_operand3_1_bank_select_register, 134);
-  RUN_TEST(test_iorwf_bsr_over_15, 154);
+  RUN_TEST(test_iorwf_file_over_0_or_255, 11);
+  RUN_TEST(test_iorwf_operand2_is_0_bsr_out_of_range_should_throw_error, 30);
+  RUN_TEST(test_iorwf_operand2_is_3_should_throw_error, 52);
+  RUN_TEST(test_iorwf_operand2_is_negative_six_should_throw_error, 75);
+  RUN_TEST(test_iorwf_operand3_should_throw_error_with_value_negative_two, 97);
+  RUN_TEST(test_iorwf_operand3_should_throw_error_with_value_negative_three, 119);
+  RUN_TEST(test_iorwf_operand3_should_throw_error_with_W, 141);
+  RUN_TEST(test_iorwf_operand3_should_throw_error_with_F, 163);
+  RUN_TEST(test_iorwf_operand2_is_1_bsr_out_of_range_should_throw_error, 185);
+  RUN_TEST(test_iorwf_operand2_negative_one_and_operand3_negative_one, 207);
+  RUN_TEST(test_iorwf_operand2_0_wreg_and_operand3_negative_one, 227);
+  RUN_TEST(test_iorwf_operand2_negative_one_and_operand3_0, 246);
+  RUN_TEST(test_iorwf_operand2_0_in_wreg_and_operand3_0_access_bank, 266);
+  RUN_TEST(test_iorwf_operand2_1_in_file_register_and_operand3_0_access_bank, 286);
+  RUN_TEST(test_iorwf_operand2_0_in_wreg_and_operand3_1_bank_select_register, 305);
+  RUN_TEST(test_iorwf_operand2_1_in_file_register_and_operand3_banked_keyword, 327);
+  RUN_TEST(test_iorwf_operand2_W_in_file_register_and_operand3_access, 346);
+  RUN_TEST(test_iorwf_operand2_F_in_file_register_and_operand3_access, 364);
+  RUN_TEST(test_iorwf_operand2_1_in_file_register_and_operand3_access, 382);
+  RUN_TEST(test_iorwf_operand2_F_in_file_register_and_operand3_banked_keyword, 400);
+  RUN_TEST(test_iorwf_operand2_W_in_file_register_and_operand3_banked_keyword, 419);
 
   return (UnityEnd());
 }

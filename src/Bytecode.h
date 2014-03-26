@@ -5,6 +5,9 @@ typedef enum 	{
 					overRange,
 					bsrRange,
 					error_operand3,	
+					op_error,
+					op_2error,
+					op_3error
 				} errorException;
 				
 typedef enum	{

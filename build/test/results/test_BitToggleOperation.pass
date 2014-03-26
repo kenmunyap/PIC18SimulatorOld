@@ -55,34 +55,34 @@
   :line: 342
   :message: ''
 - :test: test_btg_operand2_select_bit_0_and_operand3_1_bank_selecter_register
-  :line: 363
+  :line: 364
   :message: ''
 - :test: test_btg_operand2_select_bit_1_and_operand3_1_bank_selecter_register
-  :line: 383
+  :line: 384
   :message: ''
 - :test: test_btg_operand2_select_bit_2_and_operand3_1_bank_selecter_register
-  :line: 403
+  :line: 404
   :message: ''
 - :test: test_btg_operand2_select_bit_3_and_operand3_1_bank_selecter_register
-  :line: 422
+  :line: 423
   :message: ''
 - :test: test_btg_operand2_select_bit_4_and_operand3_1_bank_selecter_register
-  :line: 441
+  :line: 442
   :message: ''
 - :test: test_btg_operand2_select_bit_5_and_operand3_1_bank_selecter_register
-  :line: 460
+  :line: 461
   :message: ''
 - :test: test_btg_operand2_select_bit_6_and_operand3_1_bank_selecter_register
-  :line: 479
+  :line: 480
   :message: ''
 - :test: test_btg_operand2_select_bit_7_and_operand3_1_bank_selecter_register
-  :line: 498
+  :line: 499
   :message: ''
 - :test: test_btg_operand2_select_bit_7_and_operand3_use_BANKED_keyword
-  :line: 517
+  :line: 518
   :message: ''
 - :test: test_btg_operand2_select_bit_7_and_operand3_use_negative_five
-  :line: 536
+  :line: 537
   :message: ''
 :failures: []
 :ignores: []
