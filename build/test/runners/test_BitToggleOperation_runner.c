@@ -35,7 +35,13 @@ char* GlobalOrderError;
 extern void setUp(void);
 extern void tearDown(void);
 extern void test_btg_operand1_is_over_0_or_255(void);
-extern void test_btg_operand2_select_bit_negative_one_and_operand3_negative_one(void);
+extern void test_btg_operand2_select_bit_7_and_operand3_over_15_error(void);
+extern void test_btg_if_operand3_is_WREG_should_throw_error(void);
+extern void test_btg_if_operand3_is_File_should_throw_error(void);
+extern void test_btg_if_operand3_is_negative_two_should_throw_error(void);
+extern void test_btg_if_operand3_is_negative_three_should_throw_error(void);
+extern void test_btg_if_operand3_is_default_should_not_throw_error(void);
+extern void test_btg_operand2_select_bit_zero_and_operand3_negative_one_operand1_overange_to_80(void);
 extern void test_btg_operand2_select_bit_0_and_operand3_0_access_bank(void);
 extern void test_btg_operand2_select_bit_1_and_operand3_0_access_bank(void);
 extern void test_btg_operand2_select_bit_3_and_operand3_0_access_bank(void);
@@ -43,6 +49,8 @@ extern void test_btg_operand2_select_bit_4_and_operand3_0_access_bank(void);
 extern void test_btg_operand2_select_bit_5_and_operand3_0_access_bank(void);
 extern void test_btg_operand2_select_bit_6_and_operand3_0_access_bank(void);
 extern void test_btg_operand2_select_bit_7_and_operand3_0_access_bank(void);
+extern void test_btg_operand2_select_bit_7_and_operand3_use_ACCESS_keyword(void);
+extern void test_btg_operand2_select_bit_7_and_operand3_use_negative_four(void);
 extern void test_btg_operand2_select_bit_0_and_operand3_1_bank_selecter_register(void);
 extern void test_btg_operand2_select_bit_1_and_operand3_1_bank_selecter_register(void);
 extern void test_btg_operand2_select_bit_2_and_operand3_1_bank_selecter_register(void);
@@ -51,6 +59,8 @@ extern void test_btg_operand2_select_bit_4_and_operand3_1_bank_selecter_register
 extern void test_btg_operand2_select_bit_5_and_operand3_1_bank_selecter_register(void);
 extern void test_btg_operand2_select_bit_6_and_operand3_1_bank_selecter_register(void);
 extern void test_btg_operand2_select_bit_7_and_operand3_1_bank_selecter_register(void);
+extern void test_btg_operand2_select_bit_7_and_operand3_use_BANKED_keyword(void);
+extern void test_btg_operand2_select_bit_7_and_operand3_use_negative_five(void);
 
 
 //=======Test Reset Option=====
@@ -66,23 +76,33 @@ int main(void)
 {
   Unity.TestFile = "test_BitToggleOperation.c";
   UnityBegin();
-  RUN_TEST(test_btg_operand1_is_over_0_or_255, 10);
-  RUN_TEST(test_btg_operand2_select_bit_negative_one_and_operand3_negative_one, 30);
-  RUN_TEST(test_btg_operand2_select_bit_0_and_operand3_0_access_bank, 49);
-  RUN_TEST(test_btg_operand2_select_bit_1_and_operand3_0_access_bank, 68);
-  RUN_TEST(test_btg_operand2_select_bit_3_and_operand3_0_access_bank, 87);
-  RUN_TEST(test_btg_operand2_select_bit_4_and_operand3_0_access_bank, 106);
-  RUN_TEST(test_btg_operand2_select_bit_5_and_operand3_0_access_bank, 125);
-  RUN_TEST(test_btg_operand2_select_bit_6_and_operand3_0_access_bank, 144);
-  RUN_TEST(test_btg_operand2_select_bit_7_and_operand3_0_access_bank, 163);
-  RUN_TEST(test_btg_operand2_select_bit_0_and_operand3_1_bank_selecter_register, 182);
-  RUN_TEST(test_btg_operand2_select_bit_1_and_operand3_1_bank_selecter_register, 204);
-  RUN_TEST(test_btg_operand2_select_bit_2_and_operand3_1_bank_selecter_register, 225);
-  RUN_TEST(test_btg_operand2_select_bit_3_and_operand3_1_bank_selecter_register, 245);
-  RUN_TEST(test_btg_operand2_select_bit_4_and_operand3_1_bank_selecter_register, 265);
-  RUN_TEST(test_btg_operand2_select_bit_5_and_operand3_1_bank_selecter_register, 285);
-  RUN_TEST(test_btg_operand2_select_bit_6_and_operand3_1_bank_selecter_register, 305);
-  RUN_TEST(test_btg_operand2_select_bit_7_and_operand3_1_bank_selecter_register, 325);
+  RUN_TEST(test_btg_operand1_is_over_0_or_255, 13);
+  RUN_TEST(test_btg_operand2_select_bit_7_and_operand3_over_15_error, 32);
+  RUN_TEST(test_btg_if_operand3_is_WREG_should_throw_error, 56);
+  RUN_TEST(test_btg_if_operand3_is_File_should_throw_error, 80);
+  RUN_TEST(test_btg_if_operand3_is_negative_two_should_throw_error, 104);
+  RUN_TEST(test_btg_if_operand3_is_negative_three_should_throw_error, 128);
+  RUN_TEST(test_btg_if_operand3_is_default_should_not_throw_error, 152);
+  RUN_TEST(test_btg_operand2_select_bit_zero_and_operand3_negative_one_operand1_overange_to_80, 181);
+  RUN_TEST(test_btg_operand2_select_bit_0_and_operand3_0_access_bank, 198);
+  RUN_TEST(test_btg_operand2_select_bit_1_and_operand3_0_access_bank, 216);
+  RUN_TEST(test_btg_operand2_select_bit_3_and_operand3_0_access_bank, 234);
+  RUN_TEST(test_btg_operand2_select_bit_4_and_operand3_0_access_bank, 252);
+  RUN_TEST(test_btg_operand2_select_bit_5_and_operand3_0_access_bank, 270);
+  RUN_TEST(test_btg_operand2_select_bit_6_and_operand3_0_access_bank, 288);
+  RUN_TEST(test_btg_operand2_select_bit_7_and_operand3_0_access_bank, 306);
+  RUN_TEST(test_btg_operand2_select_bit_7_and_operand3_use_ACCESS_keyword, 324);
+  RUN_TEST(test_btg_operand2_select_bit_7_and_operand3_use_negative_four, 342);
+  RUN_TEST(test_btg_operand2_select_bit_0_and_operand3_1_bank_selecter_register, 363);
+  RUN_TEST(test_btg_operand2_select_bit_1_and_operand3_1_bank_selecter_register, 383);
+  RUN_TEST(test_btg_operand2_select_bit_2_and_operand3_1_bank_selecter_register, 403);
+  RUN_TEST(test_btg_operand2_select_bit_3_and_operand3_1_bank_selecter_register, 422);
+  RUN_TEST(test_btg_operand2_select_bit_4_and_operand3_1_bank_selecter_register, 441);
+  RUN_TEST(test_btg_operand2_select_bit_5_and_operand3_1_bank_selecter_register, 460);
+  RUN_TEST(test_btg_operand2_select_bit_6_and_operand3_1_bank_selecter_register, 479);
+  RUN_TEST(test_btg_operand2_select_bit_7_and_operand3_1_bank_selecter_register, 498);
+  RUN_TEST(test_btg_operand2_select_bit_7_and_operand3_use_BANKED_keyword, 517);
+  RUN_TEST(test_btg_operand2_select_bit_7_and_operand3_use_negative_five, 536);
 
   return (UnityEnd());
 }

@@ -4,10 +4,17 @@
 typedef enum 	{
 					overRange,
 					bsrRange,
+					error_operand3,	
 				} errorException;
-
+				
+typedef enum	{
+					W = -2,
+					F = -3,
+					BANKED = -4,
+					ACCESS = -5
+				}SyntaxError;
+				
 typedef enum 	{
-					
 					BTG,
 					MULLW,
 					IORWF,

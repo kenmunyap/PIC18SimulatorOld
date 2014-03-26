@@ -19,7 +19,8 @@ void  iorwf(Bytecode *code) {
 			FSR[WREG] = FSR[(FSR[BSR]<<8)+code->operand1]^FSR[WREG];
 			}	
 		}
-		else{
+		
+		else if(code->operand2 == 1){
 			if(code->operand3 == 0){
 			FSR[code->operand1] = FSR[code->operand1]^FSR[WREG];
 			}
@@ -29,9 +30,9 @@ void  iorwf(Bytecode *code) {
 				}
 				else{
 					FSR[code->operand1] = FSR[(FSR[BSR]<<8)+code->operand1]^FSR[WREG];
+					}
 				}
 			}
-		}
 	}	
 }	
 	

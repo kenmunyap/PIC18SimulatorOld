@@ -208,7 +208,7 @@ void test_iorwf_operand2_1_in_file_register_and_operand3_0_access_bank() {
 
 
 
- UnityAssertEqualNumber((_U_SINT)(_US16)((0x22)), (_U_SINT)(_US16)((FSR[code.operand1])), (((void *)0)), (_U_UINT)108, UNITY_DISPLAY_STYLE_HEX16);
+ UnityAssertEqualNumber((_U_SINT)(_US8 )((0x22)), (_U_SINT)(_US8 )((FSR[code.operand1])), (((void *)0)), (_U_UINT)108, UNITY_DISPLAY_STYLE_HEX8);
 
 }
 
@@ -242,17 +242,17 @@ void test_iorwf_operand2_0_in_wreg_and_operand3_1_bank_select_register() {
 
 
 
- FSR[0xf8b] = 0x11;
+
 
  FSR[0xfE0] = 0x01;
 
- FSR[(FSR[0xfE0]<<8)+code.operand1] = 0x11;
+ FSR[(FSR[0xfE0]<<8)+code.operand1] = 0x22;
 
-
+ FSR[0xf8b] = 0x33;
 
  iorwf(&code);
 
- UnityAssertEqualNumber((_U_SINT)(_US8 )((0x00)), (_U_SINT)(_US8 )((FSR[0xf8b])), (((void *)0)), (_U_UINT)130, UNITY_DISPLAY_STYLE_HEX8);
+ UnityAssertEqualNumber((_U_SINT)(_US8 )((0x11)), (_U_SINT)(_US8 )((FSR[0xf8b])), (((void *)0)), (_U_UINT)130, UNITY_DISPLAY_STYLE_HEX8);
 
 
 

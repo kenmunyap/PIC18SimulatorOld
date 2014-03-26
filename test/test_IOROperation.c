@@ -105,7 +105,7 @@ void test_iorwf_operand2_1_in_file_register_and_operand3_0_access_bank() {
 	
 	iorwf(&code);
 
-	TEST_ASSERT_EQUAL_HEX16(0x22,FSR[code.operand1]);
+	TEST_ASSERT_EQUAL_HEX8(0x22,FSR[code.operand1]);
 }
 
 
@@ -122,12 +122,12 @@ void test_iorwf_operand2_0_in_wreg_and_operand3_1_bank_select_register() {
                   };
 	
 	
-	FSR[WREG] = 0x11;
-	FSR[BSR] = 0x01;
-	FSR[(FSR[BSR]<<8)+code.operand1] = 0x11;
 	
+	FSR[BSR] = 0x01;
+	FSR[(FSR[BSR]<<8)+code.operand1] = 0x22;
+	FSR[WREG] = 0x33;
 	iorwf(&code);
-	TEST_ASSERT_EQUAL_HEX8(0x00,FSR[WREG]);
+	TEST_ASSERT_EQUAL_HEX8(0x11,FSR[WREG]);
 	
 }
 
