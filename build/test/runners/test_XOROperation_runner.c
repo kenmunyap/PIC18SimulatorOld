@@ -35,11 +35,24 @@ char* GlobalOrderError;
 extern void setUp(void);
 extern void tearDown(void);
 extern void test_xorwf_file_over_0_or_255(void);
+extern void test_xorwf_operand2_is_0_bsr_out_of_range_should_throw_error(void);
+extern void test_xorwf_operand2_is_3_should_throw_error(void);
+extern void test_xorwf_operand3_should_throw_error_with_value_negative_two(void);
+extern void test_xorwf_operand3_should_throw_error_with_value_negative_three(void);
+extern void test_xorwf_operand2_is_negative_six_should_throw_error(void);
+extern void test_xorwf_operand3_should_throw_error_with_W(void);
+extern void test_xorwf_operand3_should_throw_error_with_F(void);
+extern void test_xorwf_operand2_negative_one_and_operand3_negative_one(void);
+extern void test_xorwf_operand2_0_wreg_and_operand3_negative_one(void);
+extern void test_xorwf_operand2_negative_one_and_operand3_0(void);
 extern void test_xorwf_operand2_0_in_wreg_and_operand3_0_access_bank(void);
 extern void test_xorwf_operand2_1_in_wreg_and_operand3_0_access_bank(void);
 extern void test_xorwf_operand2_0_in_wreg_and_operand3_1_access_bank(void);
 extern void test_xorwf_operand2_1_in_wreg_and_operand3_1_access_bank(void);
-extern void test_xorwf_bsr_over_15(void);
+extern void test_xorwf_operand2_1_in_wreg_and_operand3_banked_keyword(void);
+extern void test_xorwf_operand2_W_keyword_and_operand3_banked_keyword(void);
+extern void test_xorwf_operand2_F_keyword_and_operand3_access_keyword(void);
+extern void test_xorwf_operand2_W_keyword_and_operand3_access_keyword(void);
 
 
 //=======Test Reset Option=====
@@ -55,12 +68,25 @@ int main(void)
 {
   Unity.TestFile = "test_XOROperation.c";
   UnityBegin();
-  RUN_TEST(test_xorwf_file_over_0_or_255, 9);
-  RUN_TEST(test_xorwf_operand2_0_in_wreg_and_operand3_0_access_bank, 30);
-  RUN_TEST(test_xorwf_operand2_1_in_wreg_and_operand3_0_access_bank, 50);
-  RUN_TEST(test_xorwf_operand2_0_in_wreg_and_operand3_1_access_bank, 70);
-  RUN_TEST(test_xorwf_operand2_1_in_wreg_and_operand3_1_access_bank, 89);
-  RUN_TEST(test_xorwf_bsr_over_15, 109);
+  RUN_TEST(test_xorwf_file_over_0_or_255, 11);
+  RUN_TEST(test_xorwf_operand2_is_0_bsr_out_of_range_should_throw_error, 31);
+  RUN_TEST(test_xorwf_operand2_is_3_should_throw_error, 54);
+  RUN_TEST(test_xorwf_operand3_should_throw_error_with_value_negative_two, 76);
+  RUN_TEST(test_xorwf_operand3_should_throw_error_with_value_negative_three, 98);
+  RUN_TEST(test_xorwf_operand2_is_negative_six_should_throw_error, 120);
+  RUN_TEST(test_xorwf_operand3_should_throw_error_with_W, 142);
+  RUN_TEST(test_xorwf_operand3_should_throw_error_with_F, 164);
+  RUN_TEST(test_xorwf_operand2_negative_one_and_operand3_negative_one, 190);
+  RUN_TEST(test_xorwf_operand2_0_wreg_and_operand3_negative_one, 210);
+  RUN_TEST(test_xorwf_operand2_negative_one_and_operand3_0, 229);
+  RUN_TEST(test_xorwf_operand2_0_in_wreg_and_operand3_0_access_bank, 249);
+  RUN_TEST(test_xorwf_operand2_1_in_wreg_and_operand3_0_access_bank, 268);
+  RUN_TEST(test_xorwf_operand2_0_in_wreg_and_operand3_1_access_bank, 287);
+  RUN_TEST(test_xorwf_operand2_1_in_wreg_and_operand3_1_access_bank, 305);
+  RUN_TEST(test_xorwf_operand2_1_in_wreg_and_operand3_banked_keyword, 324);
+  RUN_TEST(test_xorwf_operand2_W_keyword_and_operand3_banked_keyword, 343);
+  RUN_TEST(test_xorwf_operand2_F_keyword_and_operand3_access_keyword, 361);
+  RUN_TEST(test_xorwf_operand2_W_keyword_and_operand3_access_keyword, 380);
 
   return (UnityEnd());
 }

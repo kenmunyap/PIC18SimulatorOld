@@ -9,12 +9,24 @@
 - :test: test_mullw_store_into_PRODH_and_PRODL
   :line: 29
   :message: ''
+- :test: test_mullw_operand3_is_not_close_throw_error
+  :line: 49
+  :message: ''
+- :test: test_mullw_operand2_is_not_close_throw_error
+  :line: 72
+  :message: ''
+- :test: test_mullw_operand2_and_operand3_is_not_close_throw_error
+  :line: 95
+  :message: ''
 :failures: []
 :ignores: []
 :counts:
-  :total: 2
-  :passed: 2
+  :total: 5
+  :passed: 5
   :failed: 0
   :ignored: 0
 :stdout:
 - Your file register is over ranged!
+- operand3 got value!
+- operand2 got value!
+- operand2 and 3 got value!

@@ -168,7 +168,7 @@ void test_iorwf_operand3_should_throw_error_with_F() {
   Bytecode code = { .instruction = &inst,
                     .operand1 =	0x34,  //address of file select register
                     .operand2 =	 0, 	  
-                    .operand3 =  -2,					
+                    .operand3 =  F,					
                   };
 	
 	FSR[BSR] = 0xf;

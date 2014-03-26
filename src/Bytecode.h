@@ -7,7 +7,8 @@ typedef enum 	{
 					error_operand3,	
 					op_error,
 					op_2error,
-					op_3error
+					op_3error,
+					fsr_wreg
 				} errorException;
 				
 typedef enum	{

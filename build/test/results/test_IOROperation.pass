@@ -13,58 +13,58 @@
   :line: 52
   :message: ''
 - :test: test_iorwf_operand2_is_negative_six_should_throw_error
-  :line: 75
+  :line: 74
   :message: ''
 - :test: test_iorwf_operand3_should_throw_error_with_value_negative_two
-  :line: 97
+  :line: 96
   :message: ''
 - :test: test_iorwf_operand3_should_throw_error_with_value_negative_three
-  :line: 119
+  :line: 118
   :message: ''
 - :test: test_iorwf_operand3_should_throw_error_with_W
-  :line: 141
+  :line: 140
   :message: ''
 - :test: test_iorwf_operand3_should_throw_error_with_F
-  :line: 163
+  :line: 162
   :message: ''
 - :test: test_iorwf_operand2_is_1_bsr_out_of_range_should_throw_error
-  :line: 185
+  :line: 184
   :message: ''
 - :test: test_iorwf_operand2_negative_one_and_operand3_negative_one
-  :line: 207
+  :line: 211
   :message: ''
 - :test: test_iorwf_operand2_0_wreg_and_operand3_negative_one
-  :line: 227
+  :line: 231
   :message: ''
 - :test: test_iorwf_operand2_negative_one_and_operand3_0
-  :line: 246
+  :line: 250
   :message: ''
 - :test: test_iorwf_operand2_0_in_wreg_and_operand3_0_access_bank
-  :line: 266
+  :line: 270
   :message: ''
 - :test: test_iorwf_operand2_1_in_file_register_and_operand3_0_access_bank
-  :line: 286
+  :line: 290
   :message: ''
 - :test: test_iorwf_operand2_0_in_wreg_and_operand3_1_bank_select_register
-  :line: 305
+  :line: 309
   :message: ''
 - :test: test_iorwf_operand2_1_in_file_register_and_operand3_banked_keyword
-  :line: 327
+  :line: 331
   :message: ''
 - :test: test_iorwf_operand2_W_in_file_register_and_operand3_access
-  :line: 346
+  :line: 350
   :message: ''
 - :test: test_iorwf_operand2_F_in_file_register_and_operand3_access
-  :line: 364
+  :line: 368
   :message: ''
 - :test: test_iorwf_operand2_1_in_file_register_and_operand3_access
-  :line: 382
+  :line: 386
   :message: ''
 - :test: test_iorwf_operand2_F_in_file_register_and_operand3_banked_keyword
-  :line: 400
+  :line: 404
   :message: ''
 - :test: test_iorwf_operand2_W_in_file_register_and_operand3_banked_keyword
-  :line: 419
+  :line: 423
   :message: ''
 :failures: []
 :ignores: []

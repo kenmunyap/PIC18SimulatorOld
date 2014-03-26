@@ -60,7 +60,7 @@ void  iorwf(Bytecode *code) {
 			}
 	}
 	
-	//op2 == 0, op3 == 0
+
 	else if(code->operand2 == 0 || code->operand2 == W || code->operand2 == -2){
 			if(code->operand3 == 0 || code->operand3 == ACCESS || code->operand2 == -5){
 				if(code->operand1>=80){
@@ -84,7 +84,7 @@ void  iorwf(Bytecode *code) {
 			}
 	}
 	
-	//op2 == 1, op3 == 0
+
 	else if(code->operand2 == 1 || code->operand2 == F || code->operand2 == -3){
 			if(code->operand3 == 0 || code->operand3 == ACCESS || code->operand3 == -5){
 				if(code->operand1>=80){

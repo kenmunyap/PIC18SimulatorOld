@@ -4,7 +4,7 @@
 #define WREG  0xf8b
 #define BSR   0xfE0
 
-extern char FSR[];
+extern unsigned char FSR[];
 
 void  xorwf(Bytecode *code);
 

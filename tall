@@ -1,0 +1,65 @@
+[33mcommit a200ff7acf42f844a59a8ec6a6c1407e641ca7d5[m
+Author: kenmunyap <kenmunyap@gmail.com>
+Date:   Wed Mar 26 22:26:09 2014 +0800
+
+    IOR update
+
+[33mcommit 951d13399c19993f8c27a4c16fdd247a4648d024[m
+Author: kenmunyap <kenmunyap@gmail.com>
+Date:   Wed Mar 26 19:50:29 2014 +0800
+
+    Update BTG ACESS,BANKED,F<W
+
+[33mcommit ae0d94111674111ff31f8ff2607dc8892e983a92[m
+Author: kenmunyap <kenmunyap@gmail.com>
+Date:   Wed Mar 26 19:48:55 2014 +0800
+
+    Update BTG into access,F,W,BANKED
+
+[33mcommit 22522cf16ec13da286def35508260fc64119f50b[m
+Author: kenmunyap <kenmunyap@gmail.com>
+Date:   Wed Mar 12 02:01:03 2014 +0800
+
+    Correction of PIC18Simulator for BTG,MULLW,IORWF,XORWF
+
+[33mcommit f9aab088d6eb91e492b16d71bf239be6fafa4928[m
+Author: kenmunyap <kenmunyap@gmail.com>
+Date:   Tue Mar 11 23:35:00 2014 +0800
+
+    Correction for BTG,IORWF,XORWF and MULLW. DCFSNZ havent start
+
+[33mcommit d628421e399b05c6bf1245f4034f285a0a4b99a2[m
+Author: kenmunyap <kenmunyap@gmail.com>
+Date:   Thu Mar 6 01:11:04 2014 +0800
+
+    Correction of iorwf,xorwf and btg
+
+[33mcommit 284760725642e0f9d2b8cff6fe7c35a4203cbf7d[m
+Author: kenmunyap <kenmunyap@gmail.com>
+Date:   Wed Mar 5 22:19:09 2014 +0800
+
+    4 instruction done
+
+[33mcommit 57ee1284540e980258ed04e2e606f61e78daea8b[m
+Author: kenmunyap <kenmunyap@gmail.com>
+Date:   Wed Mar 5 15:12:48 2014 +0800
+
+    Store value into PRODH and PRODL
+
+[33mcommit 320e57ab7df1a57f7da7381bd9c7476f09902bed[m
+Author: kenmunyap <kenmunyap@gmail.com>
+Date:   Tue Mar 4 23:51:07 2014 +0800
+
+    Test WREG can multiply with operand1
+
+[33mcommit 3196aaae01b17a5925c5f109b47b1ad2b1659ad6[m
+Author: kenmunyap <kenmunyap@gmail.com>
+Date:   Tue Mar 4 23:19:27 2014 +0800
+
+    Push FSR value combine with bank
+
+[33mcommit 759b89c1ce291d8b737f9ac320deb7bce483b203[m
+Author: kenmunyap <kenmunyap@gmail.com>
+Date:   Tue Mar 4 22:34:55 2014 +0800
+
+    Test bit toggle choose operand2 to toggle

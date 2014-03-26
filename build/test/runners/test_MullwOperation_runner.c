@@ -36,6 +36,9 @@ extern void setUp(void);
 extern void tearDown(void);
 extern void test_mullw_operand1_is_over_0_or_255(void);
 extern void test_mullw_store_into_PRODH_and_PRODL(void);
+extern void test_mullw_operand3_is_not_close_throw_error(void);
+extern void test_mullw_operand2_is_not_close_throw_error(void);
+extern void test_mullw_operand2_and_operand3_is_not_close_throw_error(void);
 
 
 //=======Test Reset Option=====
@@ -53,6 +56,9 @@ int main(void)
   UnityBegin();
   RUN_TEST(test_mullw_operand1_is_over_0_or_255, 9);
   RUN_TEST(test_mullw_store_into_PRODH_and_PRODL, 29);
+  RUN_TEST(test_mullw_operand3_is_not_close_throw_error, 49);
+  RUN_TEST(test_mullw_operand2_is_not_close_throw_error, 72);
+  RUN_TEST(test_mullw_operand2_and_operand3_is_not_close_throw_error, 95);
 
   return (UnityEnd());
 }
