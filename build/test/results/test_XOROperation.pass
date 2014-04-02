@@ -60,11 +60,17 @@
 - :test: test_xorwf_operand2_W_keyword_and_operand3_access_keyword
   :line: 380
   :message: ''
+- :test: test_xorwf_operand1_0_and_wreg_0_status_will_get_1
+  :line: 404
+  :message: ''
+- :test: test_xorwf_operand1_is_negative_value_and_wreg_0_status_will_get_80
+  :line: 424
+  :message: ''
 :failures: []
 :ignores: []
 :counts:
-  :total: 19
-  :passed: 19
+  :total: 21
+  :passed: 21
   :failed: 0
   :ignored: 0
 :stdout:

@@ -1,0 +1,19 @@
+---
+:source:
+  :path: test
+  :file: test_DAWOperation.c
+:successes:
+- :test: test_daw_all_operand_is_negative_one
+  :line: 9
+  :message: ''
+- :test: test_daw_all_operand_is_not_negative_one
+  :line: 28
+  :message: ''
+:failures: []
+:ignores: []
+:counts:
+  :total: 2
+  :passed: 2
+  :failed: 0
+  :ignored: 0
+:stdout: []

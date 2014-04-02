@@ -1,4 +1,5 @@
 ---
 - Bytecode.h
+- CException.h
 - dCFSNZ.h
 - unity.h

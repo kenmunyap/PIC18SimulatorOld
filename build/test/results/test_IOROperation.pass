@@ -49,7 +49,7 @@
   :line: 309
   :message: ''
 - :test: test_iorwf_operand2_1_in_file_register_and_operand3_banked_keyword
-  :line: 331
+  :line: 330
   :message: ''
 - :test: test_iorwf_operand2_W_in_file_register_and_operand3_access
   :line: 350
@@ -66,11 +66,17 @@
 - :test: test_iorwf_operand2_W_in_file_register_and_operand3_banked_keyword
   :line: 423
   :message: ''
+- :test: test_iorwf_operand1_0_and_wreg_0_status_will_get_1
+  :line: 447
+  :message: ''
+- :test: test_iorwf_operand1_is_negative_value_and_wreg_0_status_will_get_80
+  :line: 468
+  :message: ''
 :failures: []
 :ignores: []
 :counts:
-  :total: 21
-  :passed: 21
+  :total: 23
+  :passed: 23
   :failed: 0
   :ignored: 0
 :stdout:

@@ -34,7 +34,17 @@ char* GlobalOrderError;
 //=======External Functions This Runner Calls=====
 extern void setUp(void);
 extern void tearDown(void);
-extern void test_iORWF_if_operand2_and_operand3_equal_to_0(void);
+extern void test_dcfsnz_file_over_0_or_255(void);
+extern void test_dcfsnz_operand2_is_0_bsr_out_of_range_should_throw_error(void);
+extern void test_dcfsnz_operand2_is_3_should_throw_error(void);
+extern void test_dcfsnz_operand2_is_negative_six_should_throw_error(void);
+extern void test_dcfsnz_operand3_should_throw_error_with_value_negative_two(void);
+extern void test_dcfsnz_operand3_should_throw_error_with_value_negative_three(void);
+extern void test_dcfsnz_operand3_should_throw_error_with_W(void);
+extern void test_dcfsnz_operand3_should_throw_error_with_F(void);
+extern void test_dcfsnz_operand2_is_1_bsr_out_of_range_should_throw_error(void);
+extern void test_dcfsnz_operand2_negative_one_and_operand3_negative_one_absoluteAddress_equal_zero(void);
+extern void test_dcfsnz_operand2_negative_one_and_operand3_negative_one_absoluteAddress_not_equal_zero(void);
 
 
 //=======Test Reset Option=====
@@ -50,7 +60,17 @@ int main(void)
 {
   Unity.TestFile = "test_DCFSNZOperation.c";
   UnityBegin();
-  RUN_TEST(test_iORWF_if_operand2_and_operand3_equal_to_0, 8);
+  RUN_TEST(test_dcfsnz_file_over_0_or_255, 11);
+  RUN_TEST(test_dcfsnz_operand2_is_0_bsr_out_of_range_should_throw_error, 30);
+  RUN_TEST(test_dcfsnz_operand2_is_3_should_throw_error, 52);
+  RUN_TEST(test_dcfsnz_operand2_is_negative_six_should_throw_error, 74);
+  RUN_TEST(test_dcfsnz_operand3_should_throw_error_with_value_negative_two, 96);
+  RUN_TEST(test_dcfsnz_operand3_should_throw_error_with_value_negative_three, 118);
+  RUN_TEST(test_dcfsnz_operand3_should_throw_error_with_W, 140);
+  RUN_TEST(test_dcfsnz_operand3_should_throw_error_with_F, 162);
+  RUN_TEST(test_dcfsnz_operand2_is_1_bsr_out_of_range_should_throw_error, 184);
+  RUN_TEST(test_dcfsnz_operand2_negative_one_and_operand3_negative_one_absoluteAddress_equal_zero, 211);
+  RUN_TEST(test_dcfsnz_operand2_negative_one_and_operand3_negative_one_absoluteAddress_not_equal_zero, 232);
 
   return (UnityEnd());
 }

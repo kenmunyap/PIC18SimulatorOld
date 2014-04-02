@@ -220,12 +220,12 @@ void test_iorwf_operand2_negative_one_and_operand3_negative_one() {
                     .operand3 = -1,					
                   };
 	
-	FSR[code.operand1] = 0x33;
-	FSR[WREG] = 0x11;
+	FSR[code.operand1] = 0x13;
+	FSR[WREG] = 0x91;
 	
 	iorwf(&code);
 
-	TEST_ASSERT_EQUAL_HEX16(0x22,FSR[code.operand1]);
+	TEST_ASSERT_EQUAL_HEX8(0x93,FSR[code.operand1]);
 	
 }
 void test_iorwf_operand2_0_wreg_and_operand3_negative_one() {
@@ -240,12 +240,12 @@ void test_iorwf_operand2_0_wreg_and_operand3_negative_one() {
                     .operand3 = -1,					
                   };
 	
-	FSR[code.operand1] = 0x33;
-	FSR[WREG] = 0x11;
+	FSR[code.operand1] = 0x13;
+	FSR[WREG] = 0x91;
 	
 	iorwf(&code);
 
-	TEST_ASSERT_EQUAL_HEX16(0x22,FSR[WREG]);
+	TEST_ASSERT_EQUAL_HEX8(0x93,FSR[WREG]);
 }
 void test_iorwf_operand2_negative_one_and_operand3_0() {
   // Create test fixture
@@ -259,12 +259,12 @@ void test_iorwf_operand2_negative_one_and_operand3_0() {
                     .operand3 =  0,					
                   };
 	
-	FSR[code.operand1] = 0x33;
-	FSR[WREG] = 0x11;
+	FSR[code.operand1] = 0x13;
+	FSR[WREG] = 0x91;
 	
 	iorwf(&code);
 
-	TEST_ASSERT_EQUAL_HEX16(0x22,FSR[code.operand1]);
+	TEST_ASSERT_EQUAL_HEX8(0x93,FSR[code.operand1]);
 	
 }
 void test_iorwf_operand2_0_in_wreg_and_operand3_0_access_bank() {
@@ -279,12 +279,12 @@ void test_iorwf_operand2_0_in_wreg_and_operand3_0_access_bank() {
                     .operand3 = 0,					
                   };
 	
-	FSR[code.operand1] = 0x33;
-	FSR[WREG] = 0x11;
+	FSR[code.operand1] = 0x13;
+	FSR[WREG] = 0x91;
 	
 	iorwf(&code);
 
-	TEST_ASSERT_EQUAL_HEX16(0x22,FSR[WREG]);
+	TEST_ASSERT_EQUAL_HEX8(0x93,FSR[WREG]);
 	
 }
 void test_iorwf_operand2_1_in_file_register_and_operand3_0_access_bank() {
@@ -299,12 +299,12 @@ void test_iorwf_operand2_1_in_file_register_and_operand3_0_access_bank() {
                     .operand3 = 0,					
                   };
 	
-	FSR[code.operand1] = 0x33;
-	FSR[WREG] = 0x11;
+	FSR[code.operand1] = 0x13;
+	FSR[WREG] = 0x91;
 	
 	iorwf(&code);
 
-	TEST_ASSERT_EQUAL_HEX8(0x22,FSR[code.operand1]);
+	TEST_ASSERT_EQUAL_HEX8(0x93,FSR[code.operand1]);
 }
 void test_iorwf_operand2_0_in_wreg_and_operand3_1_bank_select_register() {
   // Create test fixture
@@ -321,11 +321,10 @@ void test_iorwf_operand2_0_in_wreg_and_operand3_1_bank_select_register() {
 	
 	
 	FSR[BSR] = 0x01;
-	FSR[WREG] = 0x33;
-	FSR[(FSR[BSR]<<8)+code.operand1] = 0x22;
-	
+	FSR[((FSR[BSR])<<8)+code.operand1] = 0x13;
+	FSR[WREG] = 0x91;
 	iorwf(&code);
-	TEST_ASSERT_EQUAL_HEX8(0x11,FSR[WREG]);
+	TEST_ASSERT_EQUAL_HEX16(0x93,FSR[WREG]);
 	
 }
 void test_iorwf_operand2_1_in_file_register_and_operand3_banked_keyword() {
@@ -340,12 +339,13 @@ void test_iorwf_operand2_1_in_file_register_and_operand3_banked_keyword() {
                     .operand3 = BANKED,					
                   };
 	
-	FSR[WREG] = 0x11;
-	FSR[BSR] = 0x01;
-	FSR[(FSR[BSR]<<8)+code.operand1] = 0x11;
+	FSR[WREG] = 0x91;
+	FSR[BSR] = 0x1;
+	FSR[(FSR[BSR]<<8)+code.operand1] = 0x13;
+	
 	iorwf(&code);
 	
-	TEST_ASSERT_EQUAL_HEX8(0x00,FSR[code.operand1]);
+	TEST_ASSERT_EQUAL_HEX16(0x0093,FSR[0x134]);
 }
 void test_iorwf_operand2_W_in_file_register_and_operand3_access() {
   // Create test fixture
@@ -354,16 +354,16 @@ void test_iorwf_operand2_W_in_file_register_and_operand3_access() {
                       .name = "iorwf"
                      };	
   Bytecode code = { .instruction = &inst,
-                    .operand1 =	0x34,  //address of file select register
+                    .operand1 =	0x81,  //address of file select register
                     .operand2 =	W, 	  // this is select which case need to be toggle;
                     .operand3 = ACCESS,					
                   };
 	
-	FSR[WREG] = 0x11;
-	FSR[code.operand1] = 0x11;
+	FSR[WREG] = 0x13;
+	FSR[((0xf)<<8)+code.operand1] = 0x91;
 	iorwf(&code);
 	
-	TEST_ASSERT_EQUAL_HEX8(0x00,FSR[WREG]);
+	TEST_ASSERT_EQUAL_HEX16(0x0093,FSR[WREG]);
 }
 void test_iorwf_operand2_F_in_file_register_and_operand3_access() {
   // Create test fixture
@@ -372,16 +372,16 @@ void test_iorwf_operand2_F_in_file_register_and_operand3_access() {
                       .name = "iorwf"
                      };	
   Bytecode code = { .instruction = &inst,
-                    .operand1 =	0x34,  //address of file select register
+                    .operand1 =	0x81,  //address of file select register
                     .operand2 =	F, 	  // this is select which case need to be toggle;
                     .operand3 = ACCESS,					
                   };
 	
-	FSR[WREG] = 0x11;
-	FSR[code.operand1] = 0x11;
+	FSR[WREG] = 0x13;
+	FSR[((0xf)<<8)+code.operand1] = 0x91;
 	iorwf(&code);
 	
-	TEST_ASSERT_EQUAL_HEX8(0x00,FSR[code.operand1]);
+	TEST_ASSERT_EQUAL_HEX16(0x0093,FSR[0xf81]);
 }
 void test_iorwf_operand2_1_in_file_register_and_operand3_access() {
   // Create test fixture
@@ -395,11 +395,11 @@ void test_iorwf_operand2_1_in_file_register_and_operand3_access() {
                     .operand3 = ACCESS,					
                   };
 	
-	FSR[WREG] = 0x11;
-	FSR[code.operand1] = 0x11;
+	FSR[WREG] = 0x13;
+	FSR[code.operand1] = 0x91;
 	iorwf(&code);
 	
-	TEST_ASSERT_EQUAL_HEX8(0x00,FSR[code.operand1]);
+	TEST_ASSERT_EQUAL_HEX8(0x93,FSR[code.operand1]);
 }
 void test_iorwf_operand2_F_in_file_register_and_operand3_banked_keyword() {
   // Create test fixture
@@ -413,12 +413,12 @@ void test_iorwf_operand2_F_in_file_register_and_operand3_banked_keyword() {
                     .operand3 = BANKED,					
                   };
 	
-	FSR[WREG] = 0x11;
-	FSR[BSR] = 0x01;
-	FSR[(FSR[BSR]<<8)+code.operand1] = 0x11;
+	FSR[WREG] = 0x91;
+	FSR[BSR] = 0x1;
+	FSR[(FSR[BSR]<<8)+code.operand1] = 0x13;
 	iorwf(&code);
 	
-	TEST_ASSERT_EQUAL_HEX8(0x00,FSR[code.operand1]);
+	TEST_ASSERT_EQUAL_HEX16(0x0093,FSR[0x134]);
 }
 void test_iorwf_operand2_W_in_file_register_and_operand3_banked_keyword() {
   // Create test fixture
@@ -432,10 +432,56 @@ void test_iorwf_operand2_W_in_file_register_and_operand3_banked_keyword() {
                     .operand3 = BANKED,					
                   };
 	
-	FSR[WREG] = 0x11;
+	FSR[WREG] = 0x13;
 	FSR[BSR] = 0x01;
-	FSR[(FSR[BSR]<<8)+code.operand1] = 0x11;
+	FSR[(FSR[BSR]<<8)+code.operand1] = 0x91;
 	iorwf(&code);
 	
-	TEST_ASSERT_EQUAL_HEX8(0x00,FSR[WREG]);
+	TEST_ASSERT_EQUAL_HEX16(0x93,FSR[WREG]);
+}
+
+/*
+*check status
+*/
+
+void test_iorwf_operand1_0_and_wreg_0_status_will_get_1() {
+  // Create test fixture
+  Instruction inst = {
+                      .mnemonic = IORWF,
+                      .name = "iorwf"
+                     };	
+  Bytecode code = { .instruction = &inst,
+                    .operand1 =	0x34,  //address of file select register
+                    .operand2 =	-1, 	  
+                    .operand3 = -1,					
+                  };
+	
+	FSR[code.operand1] = 0x00;
+	FSR[WREG] = 0x00;
+	
+	iorwf(&code);
+
+	TEST_ASSERT_EQUAL_HEX8(0x00,FSR[code.operand1]);
+	TEST_ASSERT_EQUAL(0x04,FSR[STATUS]);
+}
+
+void test_iorwf_operand1_is_negative_value_and_wreg_0_status_will_get_80() {
+  // Create test fixture
+  Instruction inst = {
+                      .mnemonic = IORWF,
+                      .name = "iorwf"
+                     };	
+  Bytecode code = { .instruction = &inst,
+                    .operand1 =	0x34,  //address of file select register
+                    .operand2 =	-1, 	  
+                    .operand3 = -1,					
+                  };
+	
+	FSR[code.operand1] = 0xAA;
+	FSR[WREG] = 0x00;
+	
+	iorwf(&code);
+
+	TEST_ASSERT_EQUAL_HEX8(0xAA,FSR[code.operand1]);
+	TEST_ASSERT_EQUAL(0x80,FSR[STATUS]);
 }

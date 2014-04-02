@@ -19,12 +19,19 @@ typedef enum	{
 				}SyntaxError;
 				
 typedef enum 	{
-					BTG,
-					MULLW,
-					IORWF,
-					XORWF,
-					DCFSNZ,
+					BTG,   //no status affect 
+					MULLW,//done no status affect
+					IORWF,//done status affect
+					XORWF,//done status affect
+					DCFSNZ,//done no status affect
+					RRCF,//done status affect
+					DAW,//done status
+					POP,//done
+					RCALL,//done
+					TBLRD_post_increment,
 				} Mnemonic;
+
+
 
 typedef struct {
 	Mnemonic	mnemonic;
@@ -36,6 +43,7 @@ typedef struct {
 	int operand1;
 	int operand2;
 	int operand3;
+	int absoluteAddress;
 } Bytecode;
 
 

@@ -438,9 +438,9 @@ void test_iorwf_operand2_negative_one_and_operand3_negative_one() {
 
 
 
- FSR[code.operand1] = 0x33;
+ FSR[code.operand1] = 0x13;
 
- FSR[0xf8b] = 0x11;
+ FSR[0xf8b] = 0x91;
 
 
 
@@ -448,7 +448,7 @@ void test_iorwf_operand2_negative_one_and_operand3_negative_one() {
 
 
 
- UnityAssertEqualNumber((_U_SINT)(_US16)((0x22)), (_U_SINT)(_US16)((FSR[code.operand1])), (((void *)0)), (_U_UINT)228, UNITY_DISPLAY_STYLE_HEX16);
+ UnityAssertEqualNumber((_U_SINT)(_US8 )((0x93)), (_U_SINT)(_US8 )((FSR[code.operand1])), (((void *)0)), (_U_UINT)228, UNITY_DISPLAY_STYLE_HEX8);
 
 
 
@@ -478,9 +478,9 @@ void test_iorwf_operand2_0_wreg_and_operand3_negative_one() {
 
 
 
- FSR[code.operand1] = 0x33;
+ FSR[code.operand1] = 0x13;
 
- FSR[0xf8b] = 0x11;
+ FSR[0xf8b] = 0x91;
 
 
 
@@ -488,7 +488,7 @@ void test_iorwf_operand2_0_wreg_and_operand3_negative_one() {
 
 
 
- UnityAssertEqualNumber((_U_SINT)(_US16)((0x22)), (_U_SINT)(_US16)((FSR[0xf8b])), (((void *)0)), (_U_UINT)248, UNITY_DISPLAY_STYLE_HEX16);
+ UnityAssertEqualNumber((_U_SINT)(_US8 )((0x93)), (_U_SINT)(_US8 )((FSR[0xf8b])), (((void *)0)), (_U_UINT)248, UNITY_DISPLAY_STYLE_HEX8);
 
 }
 
@@ -516,9 +516,9 @@ void test_iorwf_operand2_negative_one_and_operand3_0() {
 
 
 
- FSR[code.operand1] = 0x33;
+ FSR[code.operand1] = 0x13;
 
- FSR[0xf8b] = 0x11;
+ FSR[0xf8b] = 0x91;
 
 
 
@@ -526,7 +526,7 @@ void test_iorwf_operand2_negative_one_and_operand3_0() {
 
 
 
- UnityAssertEqualNumber((_U_SINT)(_US16)((0x22)), (_U_SINT)(_US16)((FSR[code.operand1])), (((void *)0)), (_U_UINT)267, UNITY_DISPLAY_STYLE_HEX16);
+ UnityAssertEqualNumber((_U_SINT)(_US8 )((0x93)), (_U_SINT)(_US8 )((FSR[code.operand1])), (((void *)0)), (_U_UINT)267, UNITY_DISPLAY_STYLE_HEX8);
 
 
 
@@ -556,9 +556,9 @@ void test_iorwf_operand2_0_in_wreg_and_operand3_0_access_bank() {
 
 
 
- FSR[code.operand1] = 0x33;
+ FSR[code.operand1] = 0x13;
 
- FSR[0xf8b] = 0x11;
+ FSR[0xf8b] = 0x91;
 
 
 
@@ -566,7 +566,7 @@ void test_iorwf_operand2_0_in_wreg_and_operand3_0_access_bank() {
 
 
 
- UnityAssertEqualNumber((_U_SINT)(_US16)((0x22)), (_U_SINT)(_US16)((FSR[0xf8b])), (((void *)0)), (_U_UINT)287, UNITY_DISPLAY_STYLE_HEX16);
+ UnityAssertEqualNumber((_U_SINT)(_US8 )((0x93)), (_U_SINT)(_US8 )((FSR[0xf8b])), (((void *)0)), (_U_UINT)287, UNITY_DISPLAY_STYLE_HEX8);
 
 
 
@@ -596,9 +596,9 @@ void test_iorwf_operand2_1_in_file_register_and_operand3_0_access_bank() {
 
 
 
- FSR[code.operand1] = 0x33;
+ FSR[code.operand1] = 0x13;
 
- FSR[0xf8b] = 0x11;
+ FSR[0xf8b] = 0x91;
 
 
 
@@ -606,7 +606,7 @@ void test_iorwf_operand2_1_in_file_register_and_operand3_0_access_bank() {
 
 
 
- UnityAssertEqualNumber((_U_SINT)(_US8 )((0x22)), (_U_SINT)(_US8 )((FSR[code.operand1])), (((void *)0)), (_U_UINT)307, UNITY_DISPLAY_STYLE_HEX8);
+ UnityAssertEqualNumber((_U_SINT)(_US8 )((0x93)), (_U_SINT)(_US8 )((FSR[code.operand1])), (((void *)0)), (_U_UINT)307, UNITY_DISPLAY_STYLE_HEX8);
 
 }
 
@@ -640,15 +640,13 @@ void test_iorwf_operand2_0_in_wreg_and_operand3_1_bank_select_register() {
 
  FSR[0xfE0] = 0x01;
 
- FSR[0xf8b] = 0x33;
+ FSR[((FSR[0xfE0])<<8)+code.operand1] = 0x13;
 
- FSR[(FSR[0xfE0]<<8)+code.operand1] = 0x22;
-
-
+ FSR[0xf8b] = 0x91;
 
  iorwf(&code);
 
- UnityAssertEqualNumber((_U_SINT)(_US8 )((0x11)), (_U_SINT)(_US8 )((FSR[0xf8b])), (((void *)0)), (_U_UINT)328, UNITY_DISPLAY_STYLE_HEX8);
+ UnityAssertEqualNumber((_U_SINT)(_US16)((0x93)), (_U_SINT)(_US16)((FSR[0xf8b])), (((void *)0)), (_U_UINT)327, UNITY_DISPLAY_STYLE_HEX16);
 
 
 
@@ -678,17 +676,19 @@ void test_iorwf_operand2_1_in_file_register_and_operand3_banked_keyword() {
 
 
 
- FSR[0xf8b] = 0x11;
+ FSR[0xf8b] = 0x91;
 
- FSR[0xfE0] = 0x01;
+ FSR[0xfE0] = 0x1;
 
- FSR[(FSR[0xfE0]<<8)+code.operand1] = 0x11;
+ FSR[(FSR[0xfE0]<<8)+code.operand1] = 0x13;
+
+
 
  iorwf(&code);
 
 
 
- UnityAssertEqualNumber((_U_SINT)(_US8 )((0x00)), (_U_SINT)(_US8 )((FSR[code.operand1])), (((void *)0)), (_U_UINT)348, UNITY_DISPLAY_STYLE_HEX8);
+ UnityAssertEqualNumber((_U_SINT)(_US16)((0x0093)), (_U_SINT)(_US16)((FSR[0x134])), (((void *)0)), (_U_UINT)348, UNITY_DISPLAY_STYLE_HEX16);
 
 }
 
@@ -706,7 +706,7 @@ void test_iorwf_operand2_W_in_file_register_and_operand3_access() {
 
   Bytecode code = { .instruction = &inst,
 
-                    .operand1 = 0x34,
+                    .operand1 = 0x81,
 
                     .operand2 = W,
 
@@ -716,15 +716,15 @@ void test_iorwf_operand2_W_in_file_register_and_operand3_access() {
 
 
 
- FSR[0xf8b] = 0x11;
+ FSR[0xf8b] = 0x13;
 
- FSR[code.operand1] = 0x11;
+ FSR[((0xf)<<8)+code.operand1] = 0x91;
 
  iorwf(&code);
 
 
 
- UnityAssertEqualNumber((_U_SINT)(_US8 )((0x00)), (_U_SINT)(_US8 )((FSR[0xf8b])), (((void *)0)), (_U_UINT)366, UNITY_DISPLAY_STYLE_HEX8);
+ UnityAssertEqualNumber((_U_SINT)(_US16)((0x0093)), (_U_SINT)(_US16)((FSR[0xf8b])), (((void *)0)), (_U_UINT)366, UNITY_DISPLAY_STYLE_HEX16);
 
 }
 
@@ -742,7 +742,7 @@ void test_iorwf_operand2_F_in_file_register_and_operand3_access() {
 
   Bytecode code = { .instruction = &inst,
 
-                    .operand1 = 0x34,
+                    .operand1 = 0x81,
 
                     .operand2 = F,
 
@@ -752,15 +752,15 @@ void test_iorwf_operand2_F_in_file_register_and_operand3_access() {
 
 
 
- FSR[0xf8b] = 0x11;
+ FSR[0xf8b] = 0x13;
 
- FSR[code.operand1] = 0x11;
+ FSR[((0xf)<<8)+code.operand1] = 0x91;
 
  iorwf(&code);
 
 
 
- UnityAssertEqualNumber((_U_SINT)(_US8 )((0x00)), (_U_SINT)(_US8 )((FSR[code.operand1])), (((void *)0)), (_U_UINT)384, UNITY_DISPLAY_STYLE_HEX8);
+ UnityAssertEqualNumber((_U_SINT)(_US16)((0x0093)), (_U_SINT)(_US16)((FSR[0xf81])), (((void *)0)), (_U_UINT)384, UNITY_DISPLAY_STYLE_HEX16);
 
 }
 
@@ -788,15 +788,15 @@ void test_iorwf_operand2_1_in_file_register_and_operand3_access() {
 
 
 
- FSR[0xf8b] = 0x11;
+ FSR[0xf8b] = 0x13;
 
- FSR[code.operand1] = 0x11;
+ FSR[code.operand1] = 0x91;
 
  iorwf(&code);
 
 
 
- UnityAssertEqualNumber((_U_SINT)(_US8 )((0x00)), (_U_SINT)(_US8 )((FSR[code.operand1])), (((void *)0)), (_U_UINT)402, UNITY_DISPLAY_STYLE_HEX8);
+ UnityAssertEqualNumber((_U_SINT)(_US8 )((0x93)), (_U_SINT)(_US8 )((FSR[code.operand1])), (((void *)0)), (_U_UINT)402, UNITY_DISPLAY_STYLE_HEX8);
 
 }
 
@@ -824,17 +824,17 @@ void test_iorwf_operand2_F_in_file_register_and_operand3_banked_keyword() {
 
 
 
- FSR[0xf8b] = 0x11;
+ FSR[0xf8b] = 0x91;
 
- FSR[0xfE0] = 0x01;
+ FSR[0xfE0] = 0x1;
 
- FSR[(FSR[0xfE0]<<8)+code.operand1] = 0x11;
+ FSR[(FSR[0xfE0]<<8)+code.operand1] = 0x13;
 
  iorwf(&code);
 
 
 
- UnityAssertEqualNumber((_U_SINT)(_US8 )((0x00)), (_U_SINT)(_US8 )((FSR[code.operand1])), (((void *)0)), (_U_UINT)421, UNITY_DISPLAY_STYLE_HEX8);
+ UnityAssertEqualNumber((_U_SINT)(_US16)((0x0093)), (_U_SINT)(_US16)((FSR[0x134])), (((void *)0)), (_U_UINT)421, UNITY_DISPLAY_STYLE_HEX16);
 
 }
 
@@ -862,16 +862,108 @@ void test_iorwf_operand2_W_in_file_register_and_operand3_banked_keyword() {
 
 
 
- FSR[0xf8b] = 0x11;
+ FSR[0xf8b] = 0x13;
 
  FSR[0xfE0] = 0x01;
 
- FSR[(FSR[0xfE0]<<8)+code.operand1] = 0x11;
+ FSR[(FSR[0xfE0]<<8)+code.operand1] = 0x91;
 
  iorwf(&code);
 
 
 
- UnityAssertEqualNumber((_U_SINT)(_US8 )((0x00)), (_U_SINT)(_US8 )((FSR[0xf8b])), (((void *)0)), (_U_UINT)440, UNITY_DISPLAY_STYLE_HEX8);
+ UnityAssertEqualNumber((_U_SINT)(_US16)((0x93)), (_U_SINT)(_US16)((FSR[0xf8b])), (((void *)0)), (_U_UINT)440, UNITY_DISPLAY_STYLE_HEX16);
+
+}
+
+
+
+
+
+
+
+
+
+
+
+void test_iorwf_operand1_0_and_wreg_0_status_will_get_1() {
+
+
+
+  Instruction inst = {
+
+                      .mnemonic = IORWF,
+
+                      .name = "iorwf"
+
+                     };
+
+  Bytecode code = { .instruction = &inst,
+
+                    .operand1 = 0x34,
+
+                    .operand2 = -1,
+
+                    .operand3 = -1,
+
+                  };
+
+
+
+ FSR[code.operand1] = 0x00;
+
+ FSR[0xf8b] = 0x00;
+
+
+
+ iorwf(&code);
+
+
+
+ UnityAssertEqualNumber((_U_SINT)(_US8 )((0x00)), (_U_SINT)(_US8 )((FSR[code.operand1])), (((void *)0)), (_U_UINT)464, UNITY_DISPLAY_STYLE_HEX8);
+
+ UnityAssertEqualNumber((_U_SINT)((0x04)), (_U_SINT)((FSR[0xfd8])), (((void *)0)), (_U_UINT)465, UNITY_DISPLAY_STYLE_INT);
+
+}
+
+
+
+void test_iorwf_operand1_is_negative_value_and_wreg_0_status_will_get_80() {
+
+
+
+  Instruction inst = {
+
+                      .mnemonic = IORWF,
+
+                      .name = "iorwf"
+
+                     };
+
+  Bytecode code = { .instruction = &inst,
+
+                    .operand1 = 0x34,
+
+                    .operand2 = -1,
+
+                    .operand3 = -1,
+
+                  };
+
+
+
+ FSR[code.operand1] = 0xAA;
+
+ FSR[0xf8b] = 0x00;
+
+
+
+ iorwf(&code);
+
+
+
+ UnityAssertEqualNumber((_U_SINT)(_US8 )((0xAA)), (_U_SINT)(_US8 )((FSR[code.operand1])), (((void *)0)), (_U_UINT)485, UNITY_DISPLAY_STYLE_HEX8);
+
+ UnityAssertEqualNumber((_U_SINT)((0x80)), (_U_SINT)((FSR[0xfd8])), (((void *)0)), (_U_UINT)486, UNITY_DISPLAY_STYLE_INT);
 
 }

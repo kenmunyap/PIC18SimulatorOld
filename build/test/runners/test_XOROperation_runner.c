@@ -53,6 +53,8 @@ extern void test_xorwf_operand2_1_in_wreg_and_operand3_banked_keyword(void);
 extern void test_xorwf_operand2_W_keyword_and_operand3_banked_keyword(void);
 extern void test_xorwf_operand2_F_keyword_and_operand3_access_keyword(void);
 extern void test_xorwf_operand2_W_keyword_and_operand3_access_keyword(void);
+extern void test_xorwf_operand1_0_and_wreg_0_status_will_get_1(void);
+extern void test_xorwf_operand1_is_negative_value_and_wreg_0_status_will_get_80(void);
 
 
 //=======Test Reset Option=====
@@ -87,6 +89,8 @@ int main(void)
   RUN_TEST(test_xorwf_operand2_W_keyword_and_operand3_banked_keyword, 343);
   RUN_TEST(test_xorwf_operand2_F_keyword_and_operand3_access_keyword, 361);
   RUN_TEST(test_xorwf_operand2_W_keyword_and_operand3_access_keyword, 380);
+  RUN_TEST(test_xorwf_operand1_0_and_wreg_0_status_will_get_1, 404);
+  RUN_TEST(test_xorwf_operand1_is_negative_value_and_wreg_0_status_will_get_80, 424);
 
   return (UnityEnd());
 }

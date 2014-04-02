@@ -55,6 +55,8 @@ extern void test_iorwf_operand2_F_in_file_register_and_operand3_access(void);
 extern void test_iorwf_operand2_1_in_file_register_and_operand3_access(void);
 extern void test_iorwf_operand2_F_in_file_register_and_operand3_banked_keyword(void);
 extern void test_iorwf_operand2_W_in_file_register_and_operand3_banked_keyword(void);
+extern void test_iorwf_operand1_0_and_wreg_0_status_will_get_1(void);
+extern void test_iorwf_operand1_is_negative_value_and_wreg_0_status_will_get_80(void);
 
 
 //=======Test Reset Option=====
@@ -85,12 +87,14 @@ int main(void)
   RUN_TEST(test_iorwf_operand2_0_in_wreg_and_operand3_0_access_bank, 270);
   RUN_TEST(test_iorwf_operand2_1_in_file_register_and_operand3_0_access_bank, 290);
   RUN_TEST(test_iorwf_operand2_0_in_wreg_and_operand3_1_bank_select_register, 309);
-  RUN_TEST(test_iorwf_operand2_1_in_file_register_and_operand3_banked_keyword, 331);
+  RUN_TEST(test_iorwf_operand2_1_in_file_register_and_operand3_banked_keyword, 330);
   RUN_TEST(test_iorwf_operand2_W_in_file_register_and_operand3_access, 350);
   RUN_TEST(test_iorwf_operand2_F_in_file_register_and_operand3_access, 368);
   RUN_TEST(test_iorwf_operand2_1_in_file_register_and_operand3_access, 386);
   RUN_TEST(test_iorwf_operand2_F_in_file_register_and_operand3_banked_keyword, 404);
   RUN_TEST(test_iorwf_operand2_W_in_file_register_and_operand3_banked_keyword, 423);
+  RUN_TEST(test_iorwf_operand1_0_and_wreg_0_status_will_get_1, 447);
+  RUN_TEST(test_iorwf_operand1_is_negative_value_and_wreg_0_status_will_get_80, 468);
 
   return (UnityEnd());
 }

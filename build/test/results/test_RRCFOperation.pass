@@ -1,0 +1,37 @@
+---
+:source:
+  :path: test
+  :file: test_RRCFOperation.c
+:successes:
+- :test: test_rrcf_operand2_F_in_file_register_and_operand3_access
+  :line: 9
+  :message: ''
+- :test: test_rrcf_operand2_Banked_operand3_is_off
+  :line: 28
+  :message: ''
+- :test: test_rrcf_operand2_ACCESS_operand3_is_off
+  :line: 47
+  :message: ''
+- :test: test_rrcf_operand2_ACCESS_and_larger_than_80_operand3_is_off
+  :line: 66
+  :message: ''
+- :test: test_rrcf_operand2_is_negative_1_and_Larger_than_80_operand3_is_negative_1
+  :line: 85
+  :message: ''
+- :test: test_rrcf_operand2_is_negative_1_operand3_is_negative_1
+  :line: 104
+  :message: ''
+- :test: test_rrcf_operand2_BANKED_operand3_is_negative_1
+  :line: 123
+  :message: ''
+- :test: test_rrcf_operand2_ACCESS_operand3_is_negative_1
+  :line: 142
+  :message: ''
+:failures: []
+:ignores: []
+:counts:
+  :total: 8
+  :passed: 8
+  :failed: 0
+  :ignored: 0
+:stdout: []
