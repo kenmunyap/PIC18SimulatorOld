@@ -28,7 +28,7 @@ typedef enum 	{
 					DAW,//done status
 					POP,//done
 					RCALL,//done
-					TBLRD_post_increment,
+					TBLRD_post_increment,//done
 				} Mnemonic;
 
 

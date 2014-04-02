@@ -5,8 +5,8 @@
 :successes: []
 :failures:
 - :test: test_tblrdpostincf_should_pop_the_next_value
-  :line: 27
-  :message: Expected 1 Was 85
+  :line: 33
+  :message: Expected 0x55 Was 0x34
 :ignores: []
 :counts:
   :total: 1
