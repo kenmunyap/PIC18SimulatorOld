@@ -5,7 +5,8 @@
 
 unsigned char FSR[0x1000];
 int PC;
-void  rcall(Bytecode *code) {
+
+int  rcall(Bytecode *code) {
 		int value;
 		int temp0 = 0b111110000000000000000;
 		int temp1 = 0b000001111111100000000;
@@ -17,8 +18,8 @@ void  rcall(Bytecode *code) {
 			FSR[TOSU] = ((value & temp0)>>16); 
 			FSR[TOSH] = ((value & temp1)>>8); 
 			FSR[TOSL] = (value & temp2);
-		
-			PC = PC + 2;
+			printf("%d",FSR[TOSL]);
+			PC = code->absoluteAddress + 2;
 
 	}else{
 		Throw(op_error);

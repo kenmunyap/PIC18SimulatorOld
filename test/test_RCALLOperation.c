@@ -18,7 +18,7 @@ void test_rcall_should_pop_the_next_value() {
                     .operand3 = -1,	
 					.absoluteAddress = 0x100					
                   };
-				  
+
 	PC = code.absoluteAddress;
 	PC = 0x01AAAB;
 	rcall(&code);
@@ -26,5 +26,5 @@ void test_rcall_should_pop_the_next_value() {
 	TEST_ASSERT_EQUAL_HEX8(0xAA,FSR[TOSH]);
 	TEST_ASSERT_EQUAL_HEX8(0xAB,FSR[TOSL]);
 	TEST_ASSERT_EQUAL_HEX16(0x102,PC);
-	
+
 }
