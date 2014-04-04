@@ -5,6 +5,6 @@
 #define BSR   0xfE0
 extern unsigned char FSR[];
 
-void  bitToggle(Bytecode *code);
+int  bitToggle(Bytecode *code);
 
 #endif	// __Bit_Toggle_H__

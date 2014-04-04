@@ -19,15 +19,15 @@ typedef enum	{
 				}SyntaxError;
 				
 typedef enum 	{
-					BTG,   //no status affect 
-					MULLW,//done no status affect
-					IORWF,//done status affect
-					XORWF,//done status affect
-					DCFSNZ,//done no status affect
-					RRCF,//done status affect
-					DAW,//done status
+					BTG, //done   
+					MULLW,//done
+					IORWF, 
+					XORWF,
+					DCFSNZ,
+					RRCF,
+					DAW,//done
 					POP,//done
-					RCALL,//done
+					RCALL, //done
 					TBLRD_post_increment,//done
 				} Mnemonic;
 

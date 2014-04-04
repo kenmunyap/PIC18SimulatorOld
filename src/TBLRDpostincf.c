@@ -7,7 +7,7 @@ unsigned char FSR[0x1000];
 int Table[0x200000];
 
 
-void tblrdpostincf(Bytecode *code) {
+int tblrdpostincf(Bytecode *code) {
 		int temp,value;
 		int temp0 = 0b111110000000000000000;
 		int temp1 = 0b000001111111100000000;
@@ -15,7 +15,7 @@ void tblrdpostincf(Bytecode *code) {
 		
 			FSR[TABLAT] = Table[(((FSR[TBLPTRU])<<16) + ((FSR[TBLPTRH])<<8) + (FSR[TBLPTRL]))];
 			temp = ((FSR[TBLPTRU])<<16) + ((FSR[TBLPTRH])<<8) + (FSR[TBLPTRL]);
-			
+	
 			temp++;
 			
 			FSR[TBLPTRU] = ((temp&temp0)>>16);
@@ -23,4 +23,5 @@ void tblrdpostincf(Bytecode *code) {
 			FSR[TBLPTRL] = (temp&temp2);
 			((FSR[TBLPTRU])<<16) + ((FSR[TBLPTRH])<<8) + (FSR[TBLPTRL]);
 			Table[((FSR[TBLPTRU])<<16) + ((FSR[TBLPTRH])<<8) + (FSR[TBLPTRL])];
+			
 }

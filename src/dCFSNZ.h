@@ -6,6 +6,6 @@
 
 extern unsigned char FSR[];
 
-void  dcfsnz(Bytecode *code);
+int  dcfsnz(Bytecode *code);
 
 #endif	// __DCFSNZ_H__

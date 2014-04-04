@@ -38,7 +38,7 @@ void test_rrcf_operand2_Banked_operand3_is_off() {
                   };
 	
 	FSR[BSR] = 0x1;
-	FSR[code.operand1] = 0b11100110;
+	FSR[0x143] = 0b11100110;
 	FSR[STATUS] = 1;
 	rrcf(&code);
 	TEST_ASSERT_EQUAL(0b11110011,FSR[0x143]);
@@ -76,7 +76,7 @@ void test_rrcf_operand2_ACCESS_and_larger_than_80_operand3_is_off() {
                   };
 	
 	
-	FSR[code.operand1] = 0b11100110;
+	FSR[0xf81] = 0b11100110;
 	FSR[STATUS] = 1;
 	rrcf(&code);
 	TEST_ASSERT_EQUAL(0b11110011,FSR[0xf81]);
@@ -95,7 +95,7 @@ void test_rrcf_operand2_is_negative_1_and_Larger_than_80_operand3_is_negative_1(
                   };
 	
 	
-	FSR[code.operand1] = 0b11100110;
+	FSR[0xf81] = 0b11100110;
 	FSR[STATUS] = 1;
 	rrcf(&code);
 	TEST_ASSERT_EQUAL(0b11110011,FSR[0xf81]);
@@ -133,7 +133,7 @@ void test_rrcf_operand2_BANKED_operand3_is_negative_1() {
                   };
 	
 	FSR[BSR] = 0x01;
-	FSR[code.operand1] = 0b11100110;
+	FSR[0x143] = 0b11100110;
 	FSR[STATUS] = 1;
 	rrcf(&code);
 	TEST_ASSERT_EQUAL(0b11110011,FSR[0x143]);
@@ -155,7 +155,7 @@ void test_rrcf_operand2_ACCESS_operand3_is_negative_1() {
 	FSR[code.operand1] = 0b11100110;
 	FSR[STATUS] = 1;
 	rrcf(&code);
-	TEST_ASSERT_EQUAL(0b11110011,FSR[0x143]);
+	TEST_ASSERT_EQUAL(0b11110011,FSR[0x43]);
 	TEST_ASSERT_EQUAL(0b10000001,FSR[STATUS]);
 }
 

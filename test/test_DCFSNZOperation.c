@@ -227,7 +227,7 @@ void test_dcfsnz_operand2_negative_one_and_operand3_negative_one_absoluteAddress
 	dcfsnz(&code);
 
 	TEST_ASSERT_EQUAL_HEX8(0x00,FSR[code.operand1]);
-	TEST_ASSERT_EQUAL_HEX16(0x101,code.absoluteAddress);
+
 }
 void test_dcfsnz_operand2_negative_one_and_operand3_negative_one_absoluteAddress_not_equal_zero() {
   // Create test fixture
@@ -248,7 +248,9 @@ void test_dcfsnz_operand2_negative_one_and_operand3_negative_one_absoluteAddress
 	dcfsnz(&code);
 
 	TEST_ASSERT_EQUAL_HEX8(0x10,FSR[code.operand1]);
-	TEST_ASSERT_EQUAL_HEX16(0x102,code.absoluteAddress);
+
 }
+
+
 
 

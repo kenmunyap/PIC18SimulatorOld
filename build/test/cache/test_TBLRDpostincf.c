@@ -10,7 +10,7 @@ void tearDown() {}
 
 
 
-void test_tblrdpostincf_should_pop_the_next_value() {
+void test_tblrdpostincf_should_read_current_value_and_pointer_increment_to_next_value_and_should_take_second_memory_value() {
 
 
 
@@ -58,7 +58,7 @@ void test_tblrdpostincf_should_pop_the_next_value() {
 
  UnityAssertEqualNumber((_U_SINT)(_US32)((0x00A357)), (_U_SINT)(_US32)((((FSR[0xFF8])<<16) + ((FSR[0xFF7])<<8) + (FSR[0xFF6]))), (((void *)0)), (_U_UINT)32, UNITY_DISPLAY_STYLE_HEX32);
 
- UnityAssertEqualNumber((_U_SINT)(_US8 )((0x55)), (_U_SINT)(_US8 )((Table[(((FSR[0xFF8])<<16) + ((FSR[0xFF7])<<8) + (FSR[0xFF6]))])), (((void *)0)), (_U_UINT)33, UNITY_DISPLAY_STYLE_HEX8);
+ UnityAssertEqualNumber((_U_SINT)(_US8 )((0x34)), (_U_SINT)(_US8 )((Table[(((FSR[0xFF8])<<16) + ((FSR[0xFF7])<<8) + (FSR[0xFF6]))])), (((void *)0)), (_U_UINT)33, UNITY_DISPLAY_STYLE_HEX8);
 
 
 

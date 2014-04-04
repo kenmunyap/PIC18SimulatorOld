@@ -92,7 +92,7 @@
   :failed: 0
   :ignored: 0
 :stdout:
-- Your file register is over ranged!
+- you have exceed range!!
 - Over BSR range!!
 - operand3 cannot access WREG!!
 - operand3 cannot access File!!

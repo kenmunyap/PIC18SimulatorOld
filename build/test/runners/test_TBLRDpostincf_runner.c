@@ -34,7 +34,7 @@ char* GlobalOrderError;
 //=======External Functions This Runner Calls=====
 extern void setUp(void);
 extern void tearDown(void);
-extern void test_tblrdpostincf_should_pop_the_next_value(void);
+extern void test_tblrdpostincf_should_read_current_value_and_pointer_increment_to_next_value_and_should_take_second_memory_value(void);
 
 
 //=======Test Reset Option=====
@@ -50,7 +50,7 @@ int main(void)
 {
   Unity.TestFile = "test_TBLRDpostincf.c";
   UnityBegin();
-  RUN_TEST(test_tblrdpostincf_should_pop_the_next_value, 9);
+  RUN_TEST(test_tblrdpostincf_should_read_current_value_and_pointer_increment_to_next_value_and_should_take_second_memory_value, 9);
 
   return (UnityEnd());
 }

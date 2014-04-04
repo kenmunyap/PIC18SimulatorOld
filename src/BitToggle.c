@@ -5,7 +5,7 @@
 
 char unsigned FSR[0x1000];
 
-void  bitToggle(Bytecode *code) {
+int bitToggle(Bytecode *code) {
 	
 	if(code->operand3 == -1){	
 			code->operand3 = ACCESS;
@@ -13,50 +13,89 @@ void  bitToggle(Bytecode *code) {
 	if(code->operand3 == -2 || code->operand3 == W || code->operand3 == -3 || code->operand3 == F){
 			Throw(error_operand3);
 	}
-	else if(code->operand1 <= 0x00 || code->operand1 >= 0xff){
+	else if(code->operand1 <= 0x00 ){
 				Throw(overRange);
+	}
+	else if( code->operand1 >= 0xff){
+		printf("you have exceed range!!");
 	}
 	else{
 			if(code->operand3 == 0 || code->operand3 == ACCESS || code->operand3 == -5){
 					if(code->operand1>=0x80){
 						if(code->operand2 == 0){
-						FSR[code->operand1] = FSR[(0xf<<8)+code->operand1]^0b00000001;}
+						FSR[code->operand1] = FSR[(0xf<<8)+code->operand1]^0b00000001;
+						return (code->absoluteAddress)+1;
+						}
 						else if(code->operand2==1){
-						FSR[code->operand1] = FSR[(0xf<<8)+code->operand1]^0b00000010;}
+						FSR[code->operand1] = FSR[(0xf<<8)+code->operand1]^0b00000010;
+						return (code->absoluteAddress)+1;
+						}
 						else if(code->operand2==2){
-						FSR[code->operand1] = FSR[(0xf<<8)+code->operand1]^0b00000100;}	
+						FSR[code->operand1] = FSR[(0xf<<8)+code->operand1]^0b00000100;
+						return (code->absoluteAddress)+1;
+						}	
 						else if(code->operand2==3){
-						FSR[code->operand1] = FSR[(0xf<<8)+code->operand1]^0b00001000;}	
+						FSR[code->operand1] = FSR[(0xf<<8)+code->operand1]^0b00001000;
+						return (code->absoluteAddress)+1;
+						}	
 						else if(code->operand2==4){
-						FSR[code->operand1] = FSR[(0xf<<8)+code->operand1]^0b00010000;}	
+						FSR[code->operand1] = FSR[(0xf<<8)+code->operand1]^0b00010000;
+						return (code->absoluteAddress)+1;
+						}	
 						else if(code->operand2==5){
-						FSR[code->operand1] = FSR[(0xf<<8)+code->operand1]^0b00100000;}
+						FSR[code->operand1] = FSR[(0xf<<8)+code->operand1]^0b00100000;
+						return (code->absoluteAddress)+1;
+						}
 						else if(code->operand2==6){
-						FSR[code->operand1] = FSR[(0xf<<8)+code->operand1]^0b01000000;}
+						FSR[code->operand1] = FSR[(0xf<<8)+code->operand1]^0b01000000;
+						return (code->absoluteAddress)+1;
+						}
 						else if(code->operand2==7){
-						FSR[code->operand1] = FSR[(0xf<<8)+code->operand1]^0b10000000;}
+						FSR[code->operand1] = FSR[(0xf<<8)+code->operand1]^0b10000000;
+						return (code->absoluteAddress)+1;
+						}
 						else{
-						FSR[code->operand1] = FSR[(0xf<<8)+code->operand1]^0b00000000;}
+						FSR[code->operand1] = FSR[(0xf<<8)+code->operand1]^0b00000000;
+						return (code->absoluteAddress)+1;
+						}
 					}
 					else{
 						if(code->operand2==0){
-						FSR[code->operand1] = FSR[code->operand1]^0b00000001;}
+						FSR[code->operand1] = FSR[code->operand1]^0b00000001;
+						return (code->absoluteAddress)+1;
+						}
 						else if(code->operand2==1){
-						FSR[code->operand1] = FSR[code->operand1]^0b00000010;}
+						FSR[code->operand1] = FSR[code->operand1]^0b00000010;
+						return (code->absoluteAddress)+1;
+						}
 						else if(code->operand2==2){
-						FSR[code->operand1] = FSR[code->operand1]^0b00000100;}	
+						FSR[code->operand1] = FSR[code->operand1]^0b00000100;
+						return (code->absoluteAddress)+1;
+						}	
 						else if(code->operand2==3){
-						FSR[code->operand1] = FSR[code->operand1]^0b00001000;}	
+						FSR[code->operand1] = FSR[code->operand1]^0b00001000;
+						return (code->absoluteAddress)+1;
+						}	
 						else if(code->operand2==4){
-						FSR[code->operand1] = FSR[code->operand1]^0b00010000;}	
+						FSR[code->operand1] = FSR[code->operand1]^0b00010000;
+						return (code->absoluteAddress)+1;
+						}	
 						else if(code->operand2==5){
-						FSR[code->operand1] = FSR[code->operand1]^0b00100000;}
+						FSR[code->operand1] = FSR[code->operand1]^0b00100000;
+						return (code->absoluteAddress)+1;
+						}
 						else if(code->operand2==6){
-						FSR[code->operand1] = FSR[code->operand1]^0b01000000;}
+						FSR[code->operand1] = FSR[code->operand1]^0b01000000;
+						return (code->absoluteAddress)+1;
+						}
 						else if(code->operand2==7){
-						FSR[code->operand1] = FSR[code->operand1]^0b10000000;}
+						FSR[code->operand1] = FSR[code->operand1]^0b10000000;
+						return (code->absoluteAddress)+1;
+						}
 						else{
-						FSR[code->operand1] = FSR[code->operand1]^0b00000000;}
+						FSR[code->operand1] = FSR[code->operand1]^0b00000000;
+						return (code->absoluteAddress)+1;
+						}
 					}
 				}
 				else if(code->operand3 == 1 || code->operand3 == BANKED || code->operand3 == -4){
@@ -65,23 +104,41 @@ void  bitToggle(Bytecode *code) {
 					}
 					else{
 					if(code->operand2==0){
-					FSR[code->operand1] = FSR[(FSR[BSR]<<8)+code->operand1]^0b00000001;}
+					FSR[code->operand1] = FSR[(FSR[BSR]<<8)+code->operand1]^0b00000001;
+					return (code->absoluteAddress)+1;
+					}
 					else if(code->operand2==1){
-					FSR[code->operand1] = FSR[(FSR[BSR]<<8)+code->operand1]^0b00000010;}
+					FSR[code->operand1] = FSR[(FSR[BSR]<<8)+code->operand1]^0b00000010;
+					return (code->absoluteAddress)+1;
+					}
 					else if(code->operand2==2){
-					FSR[code->operand1] = FSR[(FSR[BSR]<<8)+code->operand1]^0b00000100;}	
+					FSR[code->operand1] = FSR[(FSR[BSR]<<8)+code->operand1]^0b00000100;
+					return (code->absoluteAddress)+1;
+					}	
 					else if(code->operand2==3){
-					FSR[code->operand1] = FSR[(FSR[BSR]<<8)+code->operand1]^0b00001000;}	
+					FSR[code->operand1] = FSR[(FSR[BSR]<<8)+code->operand1]^0b00001000;
+					return (code->absoluteAddress)+1;
+					}	
 					else if(code->operand2==4){
-					FSR[code->operand1] = FSR[(FSR[BSR]<<8)+code->operand1]^0b00010000;}	
+					FSR[code->operand1] = FSR[(FSR[BSR]<<8)+code->operand1]^0b00010000;
+					return (code->absoluteAddress)+1;
+					}	
 					else if(code->operand2==5){
-					FSR[code->operand1] = FSR[(FSR[BSR]<<8)+code->operand1]^0b00100000;}
+					FSR[code->operand1] = FSR[(FSR[BSR]<<8)+code->operand1]^0b00100000;
+					return (code->absoluteAddress)+1;
+					}
 					else if(code->operand2==6){
-					FSR[code->operand1] = FSR[(FSR[BSR]<<8)+code->operand1]^0b01000000;}
+					FSR[code->operand1] = FSR[(FSR[BSR]<<8)+code->operand1]^0b01000000;
+					return (code->absoluteAddress)+1;
+					}
 					else if(code->operand2==7){
-					FSR[code->operand1] = FSR[(FSR[BSR]<<8)+code->operand1]^0b10000000;}
+					FSR[code->operand1] = FSR[(FSR[BSR]<<8)+code->operand1]^0b10000000;
+					return (code->absoluteAddress)+1;
+					}
 					else{
-					FSR[code->operand1] = FSR[(FSR[BSR]<<8)+code->operand1]^0b00000000;}
+					FSR[code->operand1] = FSR[(FSR[BSR]<<8)+code->operand1]^0b00000000;
+					return (code->absoluteAddress)+1;
+					}
 					}
 				}
 		}

@@ -1,0 +1,16 @@
+---
+:source:
+  :path: test
+  :file: test_TBLRDpostincf.c
+:successes:
+- :test: test_tblrdpostincf_should_read_current_value_and_pointer_increment_to_next_value_and_should_take_second_memory_value
+  :line: 9
+  :message: ''
+:failures: []
+:ignores: []
+:counts:
+  :total: 1
+  :passed: 1
+  :failed: 0
+  :ignored: 0
+:stdout: []

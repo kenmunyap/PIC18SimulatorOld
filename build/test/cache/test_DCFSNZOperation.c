@@ -452,7 +452,7 @@ void test_dcfsnz_operand2_negative_one_and_operand3_negative_one_absoluteAddress
 
  UnityAssertEqualNumber((_U_SINT)(_US8 )((0x00)), (_U_SINT)(_US8 )((FSR[code.operand1])), (((void *)0)), (_U_UINT)229, UNITY_DISPLAY_STYLE_HEX8);
 
- UnityAssertEqualNumber((_U_SINT)(_US16)((0x101)), (_U_SINT)(_US16)((code.absoluteAddress)), (((void *)0)), (_U_UINT)230, UNITY_DISPLAY_STYLE_HEX16);
+
 
 }
 
@@ -494,6 +494,6 @@ void test_dcfsnz_operand2_negative_one_and_operand3_negative_one_absoluteAddress
 
  UnityAssertEqualNumber((_U_SINT)(_US8 )((0x10)), (_U_SINT)(_US8 )((FSR[code.operand1])), (((void *)0)), (_U_UINT)250, UNITY_DISPLAY_STYLE_HEX8);
 
- UnityAssertEqualNumber((_U_SINT)(_US16)((0x102)), (_U_SINT)(_US16)((code.absoluteAddress)), (((void *)0)), (_U_UINT)251, UNITY_DISPLAY_STYLE_HEX16);
+
 
 }

@@ -7,7 +7,7 @@ unsigned char FSR[0x1000];
 int PIC18Stack[32];
 int PC;
 
-void  pop(Bytecode *code) {
+int  pop(Bytecode *code) {
 		int temp,value;
 
 		int temp0 = 0b111110000000000000000;

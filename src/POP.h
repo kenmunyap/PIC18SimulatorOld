@@ -12,6 +12,6 @@ extern int PIC18Stack[];
 extern unsigned char FSR[];
 extern int PC;
 
-void  pop(Bytecode *code);
+int  pop(Bytecode *code);
 
 #endif	// __POP_H__

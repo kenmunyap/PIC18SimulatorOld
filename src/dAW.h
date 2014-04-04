@@ -6,6 +6,6 @@
 #define STATUS 0xfd8 
 extern unsigned char FSR[];
 
-void  daw(Bytecode *code);
+int  daw(Bytecode *code);
 
 #endif	// __DAW_H__

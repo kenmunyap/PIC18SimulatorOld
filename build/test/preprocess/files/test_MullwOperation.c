@@ -22,7 +22,7 @@ void test_mullw_operand1_is_over_0_or_255(){
 
   Bytecode code = { .instruction = &inst,
 
-                    .operand1 = 0xfff,
+                    .operand1 = 0x00,
 
                     .operand2 = 0,
 

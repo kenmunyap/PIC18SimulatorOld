@@ -6,6 +6,6 @@
 #define STATUS 0xfd8 
 extern unsigned char FSR[];
 
-void  rrcf(Bytecode *code);
+int  rrcf(Bytecode *code);
 
 #endif	// __RRCF_H__

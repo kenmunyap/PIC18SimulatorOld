@@ -5,7 +5,7 @@
 
 unsigned char FSR[0x1000];
 
-void  daw(Bytecode *code) {
+int  daw(Bytecode *code) {
 	int tempH = 0xF0;
 	int tempL = 0x0F;
 	int valueH = 0,valueL = 0;
@@ -32,7 +32,8 @@ void  daw(Bytecode *code) {
 				valueH = valueH<<4;
 			}
 	
-			FSR[WREG]=valueH+valueL;	
+			FSR[WREG]=valueH+valueL;
+			return (code->absoluteAddress)+1;
 		}
 		
 	

@@ -6,7 +6,7 @@
 
 unsigned char FSR[0x1000];
 
-void  mullw(Bytecode *code) {
+int  mullw(Bytecode *code) {
 	
 	int maskH = 0xFF00;
 	int maskL = 0x00FF;
@@ -15,8 +15,11 @@ void  mullw(Bytecode *code) {
 
 		
 
-	if(code->operand1 <= 0 || code->operand1 >= 255){
+	if(code->operand1 <= 0 ){
 				Throw(overRange);
+	}
+	if( code->operand1 > 0xff){
+		printf("you have exceed range!!");
 	}
 	if(code->operand2 != -1 && code->operand3 != -1){
 		Throw(op_error);
@@ -32,5 +35,6 @@ void  mullw(Bytecode *code) {
 		
 		FSR[PRODH] = ((maskH&temp1)>>8);
 		FSR[PRODL] = maskL&temp1;
+		return (code->absoluteAddress)+1;
 	}
 }

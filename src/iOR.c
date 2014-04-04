@@ -5,7 +5,7 @@
 
 unsigned char FSR[0x1000];
 
-void  iorwf(Bytecode *code) {
+int iorwf(Bytecode *code) {
 	int temp;
 	FSR[STATUS] = 0;
 	if(code->operand2 == -1 && code->operand3 == -1){
@@ -33,40 +33,51 @@ void  iorwf(Bytecode *code) {
 	if(code->operand3 == -2 || code->operand3 == -3 || code->operand3 == W || code->operand3 == F){
 			Throw(op_3error);
 	}
-	if(code->operand1<=0 || code->operand1>=255){
+	if(code->operand1<0x000){
 			Throw(overRange);
 	}
+	if( code->operand1>0xfff){
+		printf("you have exceed range!!");
+	}
+	
+
 	else if(code->operand2 == BANKED || code->operand2 == -4){
 			if(code->operand3 == -1){
 				FSR[(FSR[BSR]<<8)+code->operand1] = FSR[(FSR[BSR]<<8)+code->operand1]|FSR[WREG];
 					if(((FSR[(FSR[BSR]<<8)+code->operand1]  & 0b10000000)>>7) == 1) {	FSR[STATUS] = FSR[STATUS] | 0b10000000; } // check N flag
 					if(FSR[(FSR[BSR]<<8)+code->operand1] == 0) {FSR[STATUS] = FSR[STATUS] | 0b00000100;} // check Z flag 
+					return (code->absoluteAddress)+1;
 			}
 	}
 	else if(code->operand2 == ACCESS || code->operand2 == -5){
 			if(code->operand3 == -1){
-				if(code->operand1>=80){
-					FSR[((0xf)<<8)+code->operand1] = FSR[((0xf)<<8)+code->operand1]|FSR[WREG];
-						if(((FSR[((0xf)<<8)+code->operand1]  & 0b10000000)>>7) == 1) {	FSR[STATUS] = FSR[STATUS] | 0b10000000; } // check N flag
-						if(FSR[((0xf)<<8)+code->operand1]  == 0) {FSR[STATUS] = FSR[STATUS] | 0b00000100;} // check Z flag 
+					if(code->operand1>=80){
+						FSR[((0xf)<<8)+code->operand1] = FSR[((0xf)<<8)+code->operand1]|FSR[WREG];
+							if(((FSR[((0xf)<<8)+code->operand1]  & 0b10000000)>>7) == 1) {	FSR[STATUS] = FSR[STATUS] | 0b10000000; } // check N flag
+							if(FSR[((0xf)<<8)+code->operand1]  == 0) {FSR[STATUS] = FSR[STATUS] | 0b00000100;} // check Z flag
+							return (code->absoluteAddress)+1;						
+					}
+					else{
+						FSR[code->operand1] = FSR[code->operand1]|FSR[WREG];
+							if(((FSR[code->operand1]  & 0b10000000)>>7) == 1) {	FSR[STATUS] = FSR[STATUS] | 0b10000000; } // check N flag
+							if(FSR[code->operand1]  == 0) {FSR[STATUS] = FSR[STATUS] | 0b00000100;} // check Z flag
+							return (code->absoluteAddress)+1;
+					}
 				}
-				else{
-					FSR[code->operand1] = FSR[code->operand1]|FSR[WREG];
-						if(((FSR[code->operand1]  & 0b10000000)>>7) == 1) {	FSR[STATUS] = FSR[STATUS] | 0b10000000; } // check N flag
-						if(FSR[code->operand1]  == 0) {FSR[STATUS] = FSR[STATUS] | 0b00000100;} // check Z flag
-				}
-			}
+			
 	}
 	else if(code->operand2 == -1 && code->operand3 == -1){
 			if(code->operand1>=80){
 				FSR[((0xf)<<8)+code->operand1] = FSR[((0xf)<<8)+code->operand1]|FSR[WREG];
 					if(((FSR[((0xf)<<8)+code->operand1]  & 0b10000000)>>7) == 1) {	FSR[STATUS] = FSR[STATUS] | 0b10000000; } // check N flag
 					if(FSR[((0xf)<<8)+code->operand1]  == 0) {FSR[STATUS] = FSR[STATUS] | 0b00000100;} // check Z flag 
+					return (code->absoluteAddress)+1;
 			}
 			else{
 				FSR[code->operand1] = FSR[code->operand1]|FSR[WREG];
 					if(((FSR[code->operand1]  & 0b10000000)>>7) == 1) {	FSR[STATUS] = FSR[STATUS] | 0b10000000; } // check N flag
 					if(FSR[code->operand1]  == 0) {FSR[STATUS] = FSR[STATUS] | 0b00000100;} // check Z flag
+					return (code->absoluteAddress)+1;
 			}
 	}
 	
@@ -77,11 +88,13 @@ void  iorwf(Bytecode *code) {
 					FSR[WREG] = FSR[((0xf)<<8)+code->operand1]|FSR[WREG];
 						if(((FSR[WREG] & 0b10000000)>>7) == 1) {	FSR[STATUS] = FSR[STATUS] | 0b10000000; } // check N flag
 						if(FSR[WREG] == 0) {FSR[STATUS] = FSR[STATUS] | 0b00000100;} // check Z flag
+						return (code->absoluteAddress)+1;
 				}
 				else{
 					FSR[WREG] = FSR[code->operand1]|FSR[WREG];
 						if(((FSR[WREG] & 0b10000000)>>7) == 1) {	FSR[STATUS] = FSR[STATUS] | 0b10000000; } // check N flag
 						if(FSR[WREG] == 0) {FSR[STATUS] = FSR[STATUS] | 0b00000100;} // check Z flag
+						return (code->absoluteAddress)+1;
 				}	
 			}
 			else if(code->operand3 == 1 || code->operand3 == BANKED || code->operand2 == -4){
@@ -92,6 +105,7 @@ void  iorwf(Bytecode *code) {
 					FSR[WREG]=FSR[(FSR[BSR]<<8)+code->operand1]|FSR[WREG];
 						if(((FSR[WREG] & 0b10000000)>>7) == 1) {	FSR[STATUS] = FSR[STATUS] | 0b10000000; } // check N flag
 						if(FSR[WREG] == 0) {FSR[STATUS] = FSR[STATUS] | 0b00000100;} // check Z flag
+						return (code->absoluteAddress)+1;
 				}
 			}
 			else{
@@ -106,11 +120,13 @@ void  iorwf(Bytecode *code) {
 					FSR[((0xf)<<8)+code->operand1] = FSR[((0xf)<<8)+code->operand1]|FSR[WREG];
 						if(((FSR[((0xf)<<8)+code->operand1]  & 0b10000000)>>7) == 1) {	FSR[STATUS] = FSR[STATUS] | 0b10000000; } // check N flag
 						if(FSR[((0xf)<<8)+code->operand1]  == 0) {FSR[STATUS] = FSR[STATUS] | 0b00000100;} // check Z flag 
+						return (code->absoluteAddress)+1;
 				}
 				else{
 					FSR[code->operand1] = FSR[code->operand1]|FSR[WREG];
 						if(((FSR[code->operand1]  & 0b10000000)>>7) == 1) {	FSR[STATUS] = FSR[STATUS] | 0b10000000; } // check N flag
 						if(FSR[code->operand1]  == 0) {FSR[STATUS] = FSR[STATUS] | 0b00000100;} // check Z flag
+						return (code->absoluteAddress)+1;
 				}	
 			}
 			else if(code->operand3 == 1 || code->operand3 == BANKED || code->operand2 == -4){
@@ -121,6 +137,7 @@ void  iorwf(Bytecode *code) {
 					FSR[(FSR[BSR]<<8)+code->operand1] = FSR[(FSR[BSR]<<8)+code->operand1]|FSR[WREG];
 						if(((FSR[(FSR[BSR]<<8)+code->operand1]  & 0b10000000)>>7) == 1) {	FSR[STATUS] = FSR[STATUS] | 0b10000000; } // check N flag
 						if(FSR[(FSR[BSR]<<8)+code->operand1] == 0) {FSR[STATUS] = FSR[STATUS] | 0b00000100;} // check Z flag 
+						return (code->absoluteAddress)+1;
 				}
 			}
 			
@@ -139,7 +156,14 @@ void  iorwf(Bytecode *code) {
 			
 			
 		
-		
+			// if(code->operand1>0x100 || code->operand1<0xf7f){
+		// if(code->operand3 == ACCESS || code->operand2 == ACCESS){
+			// Throw(op_error);
+		// }
+		// else if(code->operand3 == -1 || code->operand2 == -1){
+			// FSR[code->operand1] = FSR[code->operand1]|FSR[WREG];
+		// }
+	// }
 		
 		
 		

@@ -6,6 +6,6 @@
 #define STATUS 0xfd8
 extern unsigned char FSR[];
 
-void  iorwf(Bytecode *code);
+int  iorwf(Bytecode *code);
 
 #endif	// __IOR_WF_H__

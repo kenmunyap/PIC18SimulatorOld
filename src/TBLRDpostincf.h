@@ -12,6 +12,6 @@ extern int Table[];
 extern unsigned char FSR[];
 
 
-void tblrdpostincf(Bytecode *code);
+int tblrdpostincf(Bytecode *code);
 
 #endif	// __TBLRD_POST_INCREMENT_H__

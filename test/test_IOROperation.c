@@ -485,3 +485,4 @@ void test_iorwf_operand1_is_negative_value_and_wreg_0_status_will_get_80() {
 	TEST_ASSERT_EQUAL_HEX8(0xAA,FSR[code.operand1]);
 	TEST_ASSERT_EQUAL(0x80,FSR[STATUS]);
 }
+

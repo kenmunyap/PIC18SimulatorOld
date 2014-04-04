@@ -74,7 +74,7 @@ void test_rrcf_operand2_Banked_operand3_is_off() {
 
  FSR[0xfE0] = 0x1;
 
- FSR[code.operand1] = 0b11100110;
+ FSR[0x143] = 0b11100110;
 
  FSR[0xfd8] = 1;
 
@@ -150,7 +150,7 @@ void test_rrcf_operand2_ACCESS_and_larger_than_80_operand3_is_off() {
 
 
 
- FSR[code.operand1] = 0b11100110;
+ FSR[0xf81] = 0b11100110;
 
  FSR[0xfd8] = 1;
 
@@ -188,7 +188,7 @@ void test_rrcf_operand2_is_negative_1_and_Larger_than_80_operand3_is_negative_1(
 
 
 
- FSR[code.operand1] = 0b11100110;
+ FSR[0xf81] = 0b11100110;
 
  FSR[0xfd8] = 1;
 
@@ -264,7 +264,7 @@ void test_rrcf_operand2_BANKED_operand3_is_negative_1() {
 
  FSR[0xfE0] = 0x01;
 
- FSR[code.operand1] = 0b11100110;
+ FSR[0x143] = 0b11100110;
 
  FSR[0xfd8] = 1;
 
@@ -308,7 +308,7 @@ void test_rrcf_operand2_ACCESS_operand3_is_negative_1() {
 
  rrcf(&code);
 
- UnityAssertEqualNumber((_U_SINT)((0b11110011)), (_U_SINT)((FSR[0x143])), (((void *)0)), (_U_UINT)158, UNITY_DISPLAY_STYLE_INT);
+ UnityAssertEqualNumber((_U_SINT)((0b11110011)), (_U_SINT)((FSR[0x43])), (((void *)0)), (_U_UINT)158, UNITY_DISPLAY_STYLE_INT);
 
  UnityAssertEqualNumber((_U_SINT)((0b10000001)), (_U_SINT)((FSR[0xfd8])), (((void *)0)), (_U_UINT)159, UNITY_DISPLAY_STYLE_INT);
 

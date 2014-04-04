@@ -11,6 +11,6 @@ extern int PIC18Stack[];
 extern unsigned char FSR[];
 extern int PC;
 
-void  rcall(Bytecode *code);
+int  rcall(Bytecode *code);
 
 #endif	// __RCALL_H__

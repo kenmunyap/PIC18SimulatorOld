@@ -13,7 +13,7 @@ void test_mullw_operand1_is_over_0_or_255(){
                       .name = "mullw"
                      };	
   Bytecode code = { .instruction = &inst,
-                    .operand1 =	0xfff,  
+                    .operand1 =	0x00,  
                     .operand2 =	0, 	  
                     .operand3 = 0,					
                   };

@@ -74,7 +74,7 @@
   :failed: 0
   :ignored: 0
 :stdout:
-- The file is overanged!
+- you have exceed range!!
 - Over BSR range!!
 - operand2 is over value!
 - operand3 cannot put -2!
