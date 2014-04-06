@@ -8,6 +8,16 @@ int PIC18Stack[32];
 int PC;
 
 int  pop(Bytecode *code) {
+
+	   /*
+		*	pop value from stack
+		*	save the value in File Register or WREG
+		*	Throw: op_error if operand1 operand2 operand3 is not blank
+		*	Input: stack value when pointer is pointing
+		*	Return: FSR[TOSH] FSR[TOSU] FSR[TOSL]
+		*
+		*/
+
 		int temp,value;
 
 		int temp0 = 0b111110000000000000000;

@@ -6,6 +6,16 @@
 unsigned char FSR[0x1000];
 
 int  xorwf(Bytecode *code) {
+
+		/*
+		*	Create a xor gate function WREG to F 
+		*	save the value in File Register or WREG
+		*	Throw:op_2error range from -5 to 1
+		*		  op_3error when having -2 -3 W or F
+		*		  overRange when the range over from 0 to 255
+		*	Input: BSR value,ACCESS value and FSR[code.operand1] value
+		*	Return: value into BSR,ACCESS or WREG
+		*/
 		int N;
 		int Z;
 		FSR[STATUS] = 0;

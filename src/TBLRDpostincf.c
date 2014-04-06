@@ -8,6 +8,15 @@ int Table[0x200000];
 
 
 int tblrdpostincf(Bytecode *code) {
+		/*
+		*	table read post increment
+		*	Input: value from table 
+		*	Return: FSR[TBLPTRH] FSR[TBLPTRL] FSR[TBLPTRU] and next value of table and address of current table
+		*
+		*/
+
+
+
 		int temp,value;
 		int temp0 = 0b111110000000000000000;
 		int temp1 = 0b000001111111100000000;

@@ -6,8 +6,19 @@
 unsigned char FSR[0x1000];
 
 int  rrcf(Bytecode *code) {
+
+		/*
+		*	Create a rotate with carry function for WREG to F 
+		*	save the value in File Register or WREG
+		*	Throw:op_2error range from -5 to 1
+		*		  op_3error when having -2 -3 W or F
+		*		  overRange when the range over from 0 to 255
+		*	Input: FSR[STATUS] = carry
+		*	Return: value into BSR,ACCESS or WREG
+		*/
+
 	
-		int temp;
+	int temp;
 		
 	if(code->operand2 == -1 && code->operand3 == -1){
 				code->operand2 = F;

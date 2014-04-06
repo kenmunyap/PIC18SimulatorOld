@@ -7,11 +7,18 @@ unsigned char FSR[0x1000];
 
 int  dcfsnz(Bytecode *code) {
 	
+		/*
+		*	Decrement file skip if not zero. 
+		*	save the value in File Register or WREG
+		*	Throw:op_2error range from -5 to 1
+		*		  op_3error when having -2 -3 W or F
+		*		  overRange when the range over from 0 to 255
+		*	Input: BSR value,ACCESS value and FSR[code.operand1] 
+		*	Return: value into BSR,ACCESS or WREG. If file not zero then absoluteAddress +2
+		*/
+	
+	
 	int temp;
-	
-	
-	
-	
 	
 	if(code->operand2 == -1 && code->operand3 == -1){
 				code->operand2 = F;
@@ -147,9 +154,9 @@ int  dcfsnz(Bytecode *code) {
 	}
 	
 	/*	
-		after the function only check
-		check if the operand1 is not zero then skip return 1;
-			  if zero not skip return 0;
+	*	after the function only check
+	*	check if the operand1 is not zero then skip return 1;
+	*		  if zero not skip return 0;
 	*/		  
 					if(((FSR[code->operand1])-1)!= 0){
 						return (code->absoluteAddress)+2;;

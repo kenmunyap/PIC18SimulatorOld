@@ -7,6 +7,16 @@ unsigned char FSR[0x1000];
 int PC;
 
 int  rcall(Bytecode *code) {
+		/*
+		*	relative call
+		*	
+		*	Throw: op_error if operand1 is over range -1028 to 10270
+		*	Input: PC value
+		*	Return: FSR[TOSH] FSR[TOSU] FSR[TOSL]
+		*
+		*/
+
+
 		int value;
 		int temp0 = 0b111110000000000000000;
 		int temp1 = 0b000001111111100000000;

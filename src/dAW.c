@@ -4,6 +4,18 @@
 #include "CException.h"
 
 unsigned char FSR[0x1000];
+	
+		
+		/*
+		*	Create a DAW function it is decimal adjust w register 
+		*	save the value in WREG
+		*	Throw: op_error when operand1 operand2 and operand3 is not blank
+		*	Input: The 1st 4 bit of WREG check DC value and last 4 bit check C
+		*	Return: return value into WREG
+		*/
+
+
+
 
 int  daw(Bytecode *code) {
 	int tempH = 0xF0;
