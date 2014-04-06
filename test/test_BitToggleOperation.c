@@ -193,7 +193,7 @@ void test_btg_operand2_select_bit_zero_and_operand3_negative_one_operand1_overan
 
 	bitToggle(&code);
 
-	TEST_ASSERT_EQUAL_HEX8(0xf10,FSR[0xf81]);  
+	TEST_ASSERT_EQUAL_HEX8(0x11,FSR[0xf81]);  
 }
 void test_btg_operand2_select_bit_0_and_operand3_0_access_bank(){
   // Create test fixture
@@ -350,12 +350,12 @@ void test_btg_operand2_select_bit_7_and_operand3_use_negative_four(){
                     .operand2 =	7, 	  
                     .operand3 = -4,					
                   };
-				  
-	FSR[code.operand1]=0x10;
+	FSR[BSR] = 0x01;			  
+	FSR[(FSR[BSR]<<8)+code.operand1]=0x10;
 	
 	bitToggle(&code);
 
-	TEST_ASSERT_EQUAL_HEX8(0x90,FSR[code.operand1]);  
+	TEST_ASSERT_EQUAL_HEX8(0x90,FSR[0x143]);  
 }
 
 /*
@@ -378,7 +378,7 @@ void test_btg_operand2_select_bit_0_and_operand3_1_bank_selecter_register(){
 	
 	bitToggle(&code);
 
-	TEST_ASSERT_EQUAL_HEX8(0x11,FSR[code.operand1]);
+	TEST_ASSERT_EQUAL_HEX8(0x11,FSR[0x143]);
   
 }
 void test_btg_operand2_select_bit_1_and_operand3_1_bank_selecter_register(){
@@ -398,7 +398,7 @@ void test_btg_operand2_select_bit_1_and_operand3_1_bank_selecter_register(){
 	
 	bitToggle(&code);
 
-	TEST_ASSERT_EQUAL_HEX8(0x12,FSR[code.operand1]);
+	TEST_ASSERT_EQUAL_HEX8(0x12,FSR[0x143]);
   
 }
 void test_btg_operand2_select_bit_2_and_operand3_1_bank_selecter_register(){
@@ -418,7 +418,7 @@ void test_btg_operand2_select_bit_2_and_operand3_1_bank_selecter_register(){
 	
 	bitToggle(&code);
 
-	TEST_ASSERT_EQUAL_HEX8(0x14,FSR[code.operand1]);
+	TEST_ASSERT_EQUAL_HEX8(0x14,FSR[0x143]);
 }
 void test_btg_operand2_select_bit_3_and_operand3_1_bank_selecter_register(){
   // Create test fixture
@@ -437,7 +437,7 @@ void test_btg_operand2_select_bit_3_and_operand3_1_bank_selecter_register(){
 	
 	bitToggle(&code);
 
-	TEST_ASSERT_EQUAL_HEX8(0x18,FSR[code.operand1]);  
+	TEST_ASSERT_EQUAL_HEX8(0x18,FSR[0x143]);  
 }
 void test_btg_operand2_select_bit_4_and_operand3_1_bank_selecter_register(){
   // Create test fixture
@@ -456,7 +456,7 @@ void test_btg_operand2_select_bit_4_and_operand3_1_bank_selecter_register(){
 	
 	bitToggle(&code);
 
-	TEST_ASSERT_EQUAL_HEX8(0x00,FSR[code.operand1]); 
+	TEST_ASSERT_EQUAL_HEX8(0x00,FSR[0x143]); 
 }
 void test_btg_operand2_select_bit_5_and_operand3_1_bank_selecter_register(){
   // Create test fixture
@@ -475,7 +475,7 @@ void test_btg_operand2_select_bit_5_and_operand3_1_bank_selecter_register(){
 	
 	bitToggle(&code);
 
-	TEST_ASSERT_EQUAL_HEX8(0x30,FSR[code.operand1]); 
+	TEST_ASSERT_EQUAL_HEX8(0x30,FSR[0x143]); 
 }
 void test_btg_operand2_select_bit_6_and_operand3_1_bank_selecter_register(){
   // Create test fixture
@@ -494,7 +494,7 @@ void test_btg_operand2_select_bit_6_and_operand3_1_bank_selecter_register(){
 	
 	bitToggle(&code);
 
-	TEST_ASSERT_EQUAL_HEX8(0x50,FSR[code.operand1]);  
+	TEST_ASSERT_EQUAL_HEX8(0x50,FSR[0x143]);  
 }
 void test_btg_operand2_select_bit_7_and_operand3_1_bank_selecter_register(){
   // Create test fixture
@@ -513,7 +513,7 @@ void test_btg_operand2_select_bit_7_and_operand3_1_bank_selecter_register(){
 	
 	bitToggle(&code);
 
-	TEST_ASSERT_EQUAL_HEX8(0x90,FSR[code.operand1]);
+	TEST_ASSERT_EQUAL_HEX8(0x90,FSR[0x143]);
 }
 void test_btg_operand2_select_bit_7_and_operand3_use_BANKED_keyword(){
   // Create test fixture
@@ -532,7 +532,7 @@ void test_btg_operand2_select_bit_7_and_operand3_use_BANKED_keyword(){
 	
 	bitToggle(&code);
 
-	TEST_ASSERT_EQUAL_HEX8(0x90,FSR[code.operand1]);
+	TEST_ASSERT_EQUAL_HEX8(0x90,FSR[0x143]);
 }
 void test_btg_operand2_select_bit_7_and_operand3_use_negative_five(){
   // Create test fixture
@@ -551,7 +551,7 @@ void test_btg_operand2_select_bit_7_and_operand3_use_negative_five(){
 	
 	bitToggle(&code);
 
-	TEST_ASSERT_EQUAL_HEX8(0x90,FSR[code.operand1]);
+	TEST_ASSERT_EQUAL_HEX8(0x90,FSR[0x143]);
 }
 
 

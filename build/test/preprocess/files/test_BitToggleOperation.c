@@ -384,7 +384,7 @@ void test_btg_operand2_select_bit_zero_and_operand3_negative_one_operand1_overan
 
 
 
- UnityAssertEqualNumber((_U_SINT)(_US8 )((0xf10)), (_U_SINT)(_US8 )((FSR[0xf81])), (((void *)0)), (_U_UINT)196, UNITY_DISPLAY_STYLE_HEX8);
+ UnityAssertEqualNumber((_U_SINT)(_US8 )((0x11)), (_U_SINT)(_US8 )((FSR[0xf81])), (((void *)0)), (_U_UINT)196, UNITY_DISPLAY_STYLE_HEX8);
 
 }
 
@@ -698,9 +698,9 @@ void test_btg_operand2_select_bit_7_and_operand3_use_negative_four(){
 
                   };
 
+ FSR[0xfE0] = 0x01;
 
-
- FSR[code.operand1]=0x10;
+ FSR[(FSR[0xfE0]<<8)+code.operand1]=0x10;
 
 
 
@@ -708,7 +708,7 @@ void test_btg_operand2_select_bit_7_and_operand3_use_negative_four(){
 
 
 
- UnityAssertEqualNumber((_U_SINT)(_US8 )((0x90)), (_U_SINT)(_US8 )((FSR[code.operand1])), (((void *)0)), (_U_UINT)358, UNITY_DISPLAY_STYLE_HEX8);
+ UnityAssertEqualNumber((_U_SINT)(_US8 )((0x90)), (_U_SINT)(_US8 )((FSR[0x143])), (((void *)0)), (_U_UINT)358, UNITY_DISPLAY_STYLE_HEX8);
 
 }
 
@@ -754,7 +754,7 @@ void test_btg_operand2_select_bit_0_and_operand3_1_bank_selecter_register(){
 
 
 
- UnityAssertEqualNumber((_U_SINT)(_US8 )((0x11)), (_U_SINT)(_US8 )((FSR[code.operand1])), (((void *)0)), (_U_UINT)381, UNITY_DISPLAY_STYLE_HEX8);
+ UnityAssertEqualNumber((_U_SINT)(_US8 )((0x11)), (_U_SINT)(_US8 )((FSR[0x143])), (((void *)0)), (_U_UINT)381, UNITY_DISPLAY_STYLE_HEX8);
 
 
 
@@ -794,7 +794,7 @@ void test_btg_operand2_select_bit_1_and_operand3_1_bank_selecter_register(){
 
 
 
- UnityAssertEqualNumber((_U_SINT)(_US8 )((0x12)), (_U_SINT)(_US8 )((FSR[code.operand1])), (((void *)0)), (_U_UINT)401, UNITY_DISPLAY_STYLE_HEX8);
+ UnityAssertEqualNumber((_U_SINT)(_US8 )((0x12)), (_U_SINT)(_US8 )((FSR[0x143])), (((void *)0)), (_U_UINT)401, UNITY_DISPLAY_STYLE_HEX8);
 
 
 
@@ -834,7 +834,7 @@ void test_btg_operand2_select_bit_2_and_operand3_1_bank_selecter_register(){
 
 
 
- UnityAssertEqualNumber((_U_SINT)(_US8 )((0x14)), (_U_SINT)(_US8 )((FSR[code.operand1])), (((void *)0)), (_U_UINT)421, UNITY_DISPLAY_STYLE_HEX8);
+ UnityAssertEqualNumber((_U_SINT)(_US8 )((0x14)), (_U_SINT)(_US8 )((FSR[0x143])), (((void *)0)), (_U_UINT)421, UNITY_DISPLAY_STYLE_HEX8);
 
 }
 
@@ -872,7 +872,7 @@ void test_btg_operand2_select_bit_3_and_operand3_1_bank_selecter_register(){
 
 
 
- UnityAssertEqualNumber((_U_SINT)(_US8 )((0x18)), (_U_SINT)(_US8 )((FSR[code.operand1])), (((void *)0)), (_U_UINT)440, UNITY_DISPLAY_STYLE_HEX8);
+ UnityAssertEqualNumber((_U_SINT)(_US8 )((0x18)), (_U_SINT)(_US8 )((FSR[0x143])), (((void *)0)), (_U_UINT)440, UNITY_DISPLAY_STYLE_HEX8);
 
 }
 
@@ -910,7 +910,7 @@ void test_btg_operand2_select_bit_4_and_operand3_1_bank_selecter_register(){
 
 
 
- UnityAssertEqualNumber((_U_SINT)(_US8 )((0x00)), (_U_SINT)(_US8 )((FSR[code.operand1])), (((void *)0)), (_U_UINT)459, UNITY_DISPLAY_STYLE_HEX8);
+ UnityAssertEqualNumber((_U_SINT)(_US8 )((0x00)), (_U_SINT)(_US8 )((FSR[0x143])), (((void *)0)), (_U_UINT)459, UNITY_DISPLAY_STYLE_HEX8);
 
 }
 
@@ -948,7 +948,7 @@ void test_btg_operand2_select_bit_5_and_operand3_1_bank_selecter_register(){
 
 
 
- UnityAssertEqualNumber((_U_SINT)(_US8 )((0x30)), (_U_SINT)(_US8 )((FSR[code.operand1])), (((void *)0)), (_U_UINT)478, UNITY_DISPLAY_STYLE_HEX8);
+ UnityAssertEqualNumber((_U_SINT)(_US8 )((0x30)), (_U_SINT)(_US8 )((FSR[0x143])), (((void *)0)), (_U_UINT)478, UNITY_DISPLAY_STYLE_HEX8);
 
 }
 
@@ -986,7 +986,7 @@ void test_btg_operand2_select_bit_6_and_operand3_1_bank_selecter_register(){
 
 
 
- UnityAssertEqualNumber((_U_SINT)(_US8 )((0x50)), (_U_SINT)(_US8 )((FSR[code.operand1])), (((void *)0)), (_U_UINT)497, UNITY_DISPLAY_STYLE_HEX8);
+ UnityAssertEqualNumber((_U_SINT)(_US8 )((0x50)), (_U_SINT)(_US8 )((FSR[0x143])), (((void *)0)), (_U_UINT)497, UNITY_DISPLAY_STYLE_HEX8);
 
 }
 
@@ -1024,7 +1024,7 @@ void test_btg_operand2_select_bit_7_and_operand3_1_bank_selecter_register(){
 
 
 
- UnityAssertEqualNumber((_U_SINT)(_US8 )((0x90)), (_U_SINT)(_US8 )((FSR[code.operand1])), (((void *)0)), (_U_UINT)516, UNITY_DISPLAY_STYLE_HEX8);
+ UnityAssertEqualNumber((_U_SINT)(_US8 )((0x90)), (_U_SINT)(_US8 )((FSR[0x143])), (((void *)0)), (_U_UINT)516, UNITY_DISPLAY_STYLE_HEX8);
 
 }
 
@@ -1062,7 +1062,7 @@ void test_btg_operand2_select_bit_7_and_operand3_use_BANKED_keyword(){
 
 
 
- UnityAssertEqualNumber((_U_SINT)(_US8 )((0x90)), (_U_SINT)(_US8 )((FSR[code.operand1])), (((void *)0)), (_U_UINT)535, UNITY_DISPLAY_STYLE_HEX8);
+ UnityAssertEqualNumber((_U_SINT)(_US8 )((0x90)), (_U_SINT)(_US8 )((FSR[0x143])), (((void *)0)), (_U_UINT)535, UNITY_DISPLAY_STYLE_HEX8);
 
 }
 
@@ -1100,6 +1100,6 @@ void test_btg_operand2_select_bit_7_and_operand3_use_negative_five(){
 
 
 
- UnityAssertEqualNumber((_U_SINT)(_US8 )((0x90)), (_U_SINT)(_US8 )((FSR[code.operand1])), (((void *)0)), (_U_UINT)554, UNITY_DISPLAY_STYLE_HEX8);
+ UnityAssertEqualNumber((_U_SINT)(_US8 )((0x90)), (_U_SINT)(_US8 )((FSR[0x143])), (((void *)0)), (_U_UINT)554, UNITY_DISPLAY_STYLE_HEX8);
 
 }
